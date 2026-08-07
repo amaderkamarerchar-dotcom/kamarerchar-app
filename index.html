@@ -116,6 +116,46 @@
             gap: 8px;
         }
 
+        /* Form Styles */
+        .admin-box {
+            background: #eff6ff;
+            border: 1px dashed #3b82f6;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .input-group {
+            margin-bottom: 10px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        .btn-submit {
+            background-color: #1e3a8a;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
         .donor-card {
             background: #f8fafc;
             border: 1px solid #e2e8f0;
@@ -165,6 +205,38 @@
 
         <!-- Main Content -->
         <div class="content-area">
+            
+            <!-- Admin Data Entry Form -->
+            <div class="admin-box">
+                <h3 style="font-size: 1rem; color: #1e3a8a; margin-bottom: 10px;">➕ নতুন তথ্য যুক্ত করুন (এডমিন)</h3>
+                <form id="addDonorForm">
+                    <div class="input-group">
+                        <label>নাম:</label>
+                        <input type="text" id="donorName" placeholder="রক্তদাতার নাম লিখুন" required>
+                    </div>
+                    <div class="input-group">
+                        <label>মোবাইল নম্বর:</label>
+                        <input type="tel" id="donorPhone" placeholder="017XXXXXXXX" required>
+                    </div>
+                    <div class="input-group">
+                        <label>রক্তের গ্রুপ:</label>
+                        <select id="donorGroup" required>
+                            <option value="">গ্রুপ নির্বাচন করুন</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-submit">ডাটাবেসে সেভ করুন</button>
+                </form>
+            </div>
+
+            <!-- Donor List Section -->
             <div class="card">
                 <div class="card-title">🩸 রক্তদাতা তালিকা</div>
                 <div id="donorList">
@@ -196,7 +268,7 @@
         }
         const database = firebase.database();
 
-        // ৩. লাইভ ক্লক ফাংশন
+        // ৩. লাইভ ক্লক
         function updateClock() {
             const now = new Date();
             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
@@ -205,11 +277,32 @@
         setInterval(updateClock, 1000);
         updateClock();
 
-        // ৪. Firebase থেকে রক্তদাতার তথ্য লাইভ লোড করা
+        // ৪. নতুন রক্তদাতা ডাটাবেসে সেভ করার ফাংশন
+        document.getElementById('addDonorForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('donorName').value;
+            const phone = document.getElementById('donorPhone').value;
+            const group = document.getElementById('donorGroup').value;
+
+            // ফায়ারবেসে তথ্য push করা (সবার ফোনে সাথে সাথে লাইভ চলে যাবে)
+            database.ref('donors').push({
+                name: name,
+                phone: phone,
+                group: group,
+                timestamp: Date.now()
+            }).then(() => {
+                alert('তথ্য সফলভাবে ফায়ারবেসে যুক্ত হয়েছে!');
+                document.getElementById('addDonorForm').reset();
+            }).catch((error) => {
+                alert('সমস্যা হয়েছে: ' + error.message);
+            });
+        });
+
+        // ৫. Firebase থেকে তথ্য পড়া এবং অটোমেটিক লাইভ আপডেট দেখানো
         function loadDonors() {
             const donorsRef = database.ref('donors');
             
-            // on('value') ব্যবহারের ফলে এডমিন কোনো ডাটা চেঞ্জ বা এড করলে অটো আপডেট হবে
             donorsRef.on('value', (snapshot) => {
                 const data = snapshot.val();
                 const container = document.getElementById('donorList');
@@ -241,8 +334,8 @@
             });
         }
 
-        // পেজ লোড হলে ডাটা লোড কল হবে
+        // পেজ লোড হলে কল হবে
         window.onload = loadDonors;
     </script>
 </body>
-</html>
+    </html>
