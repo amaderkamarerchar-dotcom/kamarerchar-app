@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>আমাদের কামারের চর - সব তথ্য সব সেবা এক সাথে</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap');
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Hind Siliguri', 'Kalpurush', sans-serif;
+        }
+
+        body {
+            background-color: #f3f4f6;
+            color: #1f2937;
+            padding-bottom: 50px;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Top Header */
+        header {
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            color: white;
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        }
+
+        header h1 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-refresh {
+            background-color: #10b981;
+            color: white;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .btn-refresh:active {
+            transform: scale(0.95);
+            background-color: #059669;
+        }
+
+        /* Banner & Clear Clock */
+        .banner {
+            background-color: #0f172a;
+            color: white;
+            text-align: center;
+            padding: 20px 15px 15px;
+        }
+
+        .banner h2 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+
+        .banner p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            margin-top: 2px;
+        }
+
+        .live-datetime {
+            margin-top: 12px;
+            background: #1e293b;
+            display: inline-block;
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #facc15;
+            border: 2px solid #38bdf8;
+            box-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
+        }
+
+        /* Scrolling Notice Line */
+        .notice-ticker {
+            background: #b91c1c;
+            color: #ffffff;
+            padding: 8px 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            border-bottom: 2px solid #991b1b;
+        }
+
+        .notice-ticker span {
+            background: #facc15;
+            color: #0f172a;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-right: 8px;
+            white-space: nowrap;
+        }
+
+        marquee {
+            width: 100%;
+        }
+
+        /* Sections and Cards */
+        .content {
+            padding: 12px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 14px;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            border-left: 5px solid #2563eb;
+        }
+
+        .card-emerald { border-left-color: #059669; }
+        .card-amber { border-left-color: #d97706; }
+        .card-purple { border-left-color: #7c3aed; }
+        .card-rose { border-left-color: #e11d48; }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Weather Box */
+        .weather-box {
+            background: linear-gradient(135deg, #0284c7, #0369a1);
+            color: white;
+            padding: 12px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .weather-temp {
+            font-size: 1.8rem;
+            font-weight: 800;
+        }
+
+        /* Grid Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 8px;
+        }
+
+        .grid-btn {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 12px 8px;
+            text-align: center;
+            cursor: pointer;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: #334155;
+            transition: all 0.15s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+
+        .grid-btn:active {
+            background: #eff6ff;
+            transform: scale(0.97);
+            border-color: #3b82f6;
+        }
+
+        .btn-full {
+            grid-column: span 2;
+            background: #ecfdf5;
+            border-color: #a7f3d0;
+            color: #065f46;
+            font-size: 0.95rem;
+            font-weight: 700;
+            padding: 14px;
+        }
+
+        .icon-lg {
+            font-size: 1.4rem;
+        }
+
+        .admin-link {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .admin-link button {
+            background: none;
+            border: none;
+            color: #64748b;
+            font-size: 0.85rem;
+            text-decoration: underline;
+            cursor: pointer;
+            padding: 6px;
+        }
+
+        /* Modal Area */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(2px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        .modal-content {
+            background: white;
+            width: 100%;
+            max-width: 500px;
+            border-top-left-radius: 24px;
+            border-top-right-radius: 24px;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 20px;
+            box-shadow: 0 -10px 25px rgba(0,0,0,0.2);
+            animation: slideUp 0.25s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 12px;
+            margin-bottom: 16px;
+        }
+
+        .modal-header h3 {
+            font-size: 1.2rem;
+            color: #0f172a;
+            font-weight: 700;
+        }
+
+        .close-btn {
+            background: #f1f5f9;
+            border: none;
+            font-size: 1.1rem;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            color: #64748b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .list-item {
+            border: 1px solid #e2e8f0;
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 12px 14px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .list-item h5 { font-size: 1rem; color: #0f172a; font-weight: 700; }
+        .list-item p { font-size: 0.85rem; color: #475569; margin-top: 2px; }
+        .list-item .badge { display: inline-block; background: #fee2e2; color: #dc2626; padding: 2px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; margin-bottom: 4px; }
+        .list-item .phone { font-size: 0.9rem; color: #2563eb; font-weight: 700; display: block; margin-top: 3px; }
+
+        .call-btn {
+            background: #10b981;
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            box-shadow: 0 2px 6px rgba(16, 185, 129, 0.3);
+            display: inline-block;
+            text-align: center;
+        }
+
+        .form-group { margin-bottom: 12px; }
+        .form-group label { display: block; font-size: 0.82rem; margin-bottom: 4px; font-weight: 600; color: #475569; }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.9rem; outline: none;
+        }
+        .btn-submit {
+            width: 100%; background: #2563eb; color: white; padding: 12px; border: none; border-radius: 10px; font-size: 0.95rem; font-weight: 700; cursor: pointer; margin-top: 6px;
+        }
+
+        .quran-ayah {
+            background: #fff8dc;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            border-right: 4px solid #d97706;
+            direction: rtl;
+            font-size: 1.1rem;
+        }
+
+        .iframe-container {
+            width: 100%;
+            height: 400px;
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #f8fafc;
+        }
+
+        .backup-live-link {
+            display: block;
+            background: #e11d48;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            margin-top: 10px;
+        }
+
+        .admin-item {
+            background: #f1f5f9;
+            border-radius: 8px;
+            padding: 10px;
+            margin-top: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+        }
+        .admin-actions { display: flex; gap: 4px; }
+        .btn-delete { background: #ef4444; color: white; border: none; padding: 4px 8px; border-radius: 6px; cursor: pointer; }
+        .btn-edit { background: #0284c7; color: white; border: none; padding: 4px 8px; border-radius: 6px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>📱 আমাদের কামারের চর</h1>
+            <button class="btn-refresh" onclick="forceRefresh()">রিফ্রেশ করুন</button>
+        </header>
+
+        <!-- Banner with Clear Live DateTime -->
+        <div class="banner">
+            <h2>আমাদের কামারের চর</h2>
+            <p>সব তথ্য সব সেবা এক সাথে</p>
+            <div class="live-datetime" id="liveClock">📅 তারিখ ও সময় লোড হচ্ছে...</div>
+        </div>
+
+        <!-- Scrolling Notice Bar -->
+        <div class="notice-ticker" onclick="openCategory('আজকের নোটিশ')">
+            <span>নোটিশ:</span>
+            <marquee id="tickerText">আজকের জরুরি নোটিশ ও আপডেট দেখতে এখানে ক্লিক করুন...</marquee>
+        </div>
+
+        <div class="content">
+
+            <!-- শেরপুর জেলা আবহাওয়া ফাইল -->
+            <div class="card card-purple">
+                <div class="card-title">🌤️ শেরপুর আবহাওয়া আপডেট</div>
+                <div class="weather-box" id="weatherWidget">
+                    <div>
+                        <h4 id="weatherStatus">আবহাওয়া লোড হচ্ছে...</h4>
+                        <p style="font-size: 0.8rem; opacity: 0.9;">শেরপুর জেলা, বাংলাদেশ</p>
+                    </div>
+                    <div class="weather-temp" id="weatherTemp">--°C</div>
+                </div>
+            </div>
+
+            <!-- ১. সাধারণ ডিরেক্টরি -->
+            <div class="card card-emerald">
+                <div class="card-title">👤 গণ্যমান্য ডিরেক্টরি</div>
+                <div class="grid-2">
+                    <button class="grid-btn btn-full" onclick="openCategory('গণ্যমান্য ব্যক্তি')">
+                        <span class="icon-lg">👥</span> গণ্যমান্য ব্যক্তিবর্গ
+                    </button>
+                </div>
+            </div>
+
+            <!-- ২. জরুরি সেবা -->
+            <div class="card">
+                <div class="card-title">🚑 জরুরি সেবা (শেরপুর জেলা)</div>
+                <div class="grid-2">
+                    <button class="grid-btn" onclick="openCategory('পুলিশ')"><span class="icon-lg">🛡️</span> পুলিশ (শেরপুর)</button>
+                    <button class="grid-btn" onclick="openCategory('ফায়ার সার্ভিস')"><span class="icon-lg">🧯</span> ফায়ার সার্ভিস</button>
+                    <button class="grid-btn" onclick="openCategory('অ্যাম্বুলেন্স')"><span class="icon-lg">🚐</span> অ্যাম্বুলেন্স</button>
+                    <button class="grid-btn" onclick="openCategory('হাসপাতাল ও ক্লিনিক')"><span class="icon-lg">🏥</span> হাসপাতাল ও ডায়াগনস্টিক</button>
+                    <button class="grid-btn" onclick="openCategory('ডাক্তার')"><span class="icon-lg">👨‍⚕️</span> বিশেষজ্ঞ ডাক্তার</button>
+                    <button class="grid-btn" onclick="openCategory('পল্লী বিদ্যুৎ')"><span class="icon-lg">⚡</span> পল্লী বিদ্যুৎ</button>
+                    <button class="grid-btn" onclick="openCategory('রক্তদাতা')"><span class="icon-lg">🩸</span> রক্তদাতা তালিকা</button>
+                    <button class="grid-btn" onclick="openCategory('জরুরি হটলাইন')"><span class="icon-lg">📞</span> জরুরি হটলাইন</button>
+                </div>
+            </div>
+
+            <!-- ৩. নোটিশ ও আপডেট -->
+            <div class="card card-amber">
+                <div class="card-title">📜 নোটিশ ও আপডেট</div>
+                <div class="grid-3">
+                    <button class="grid-btn" onclick="openCategory('আজকের নোটিশ')"><span class="icon-lg">📢</span> আজকের নোটিশ</button>
+                    <button class="grid-btn" onclick="openCategory('ইউনিয়ন নোটিশ')"><span class="icon-lg">🏛️</span> ইউনিয়ন নোটিশ</button>
+                    <button class="grid-btn" onclick="openCategory('সরকারি ঘোষণা')"><span class="icon-lg">📜</span> সরকারি ঘোষণা</button>
+                    <button class="grid-btn" onclick="openCategory('শিক্ষা নোটিশ')"><span class="icon-lg">🎓</span> শিক্ষা নোটিশ</button>
+                </div>
+            </div>
+
+            <!-- ৪. ধর্মীয় তথ্য ও আল-কোরআন -->
+            <div class="card card-emerald">
+                <div class="card-title">🕌 ধর্মীয় তথ্য ও তাহফিজুল কোরআন</div>
+                <div class="grid-3">
+                    <button class="grid-btn" onclick="loadTahfizQuran()"><span class="icon-lg">📖</span> তাহফিজুল কোরআন</button>
+                    <button class="grid-btn" onclick="loadSherpurPrayers()"><span class="icon-lg">⏰</span> নামাজের সময় (আজ)</button>
+                    <button class="grid-btn" onclick="openCategory('মসজিদ')"><span class="icon-lg">🕌</span> মসজিদ</button>
+                    <button class="grid-btn" onclick="openCategory('মাদ্রাসা')"><span class="icon-lg">🏫</span> মাদ্রাসা</button>
+                    <button class="grid-btn" onclick="openCategory('মাহফিল')"><span class="icon-lg">🎙️</span> মাহফিল</button>
+                    <button class="grid-btn" onclick="openCategory('সাহরি ও ইফতার')"><span class="icon-lg">📅</span> সাহরি ও ইফতার</button>
+                </div>
+            </div>
+
+            <!-- ৫. সামাজিক সেবা -->
+            <div class="card card-purple">
+                <div class="card-title">🤝 সামাজিক সেবা</div>
+                <div class="grid-2">
+                    <button class="grid-btn" onclick="openCategory('স্বেচ্ছাসেবক')"><span class="icon-lg">🙋‍♂️</span> স্বেচ্ছাসেবক</button>
+                    <button class="grid-btn" onclick="openCategory('সাহায্য সহযোগিতা')"><span class="icon-lg">🤲</span> সাহায্য সহযোগিতা</button>
+                    <button class="grid-btn" onclick="openCategory('ত্রাণ কর্মসূচি')"><span class="icon-lg">📦</span> ত্রাণ কর্মসূচি</button>
+                    <button class="grid-btn" onclick="openCategory('সামাজিক সংগঠন')"><span class="icon-lg">🏢</span> সামাজিক সংগঠন</button>
+                </div>
+            </div>
+
+            <!-- ৬. প্রতিষ্ঠান সমূহ -->
+            <div class="card">
+                <div class="card-title">🏫 প্রতিষ্ঠান সমূহ</div>
+                <div class="grid-2">
+                    <button class="grid-btn" onclick="openCategory('প্রাথমিক বিদ্যালয়')"><span class="icon-lg">🏫</span> প্রাথমিক বিদ্যালয়</button>
+                    <button class="grid-btn" onclick="openCategory('উচ্চ বিদ্যালয়')"><span class="icon-lg">🏫</span> উচ্চ বিদ্যালয়</button>
+                    <button class="grid-btn" onclick="openCategory('কলেজ')"><span class="icon-lg">🏛️</span> কলেজ</button>
+                    <button class="grid-btn" onclick="openCategory('মাদ্রাসা')"><span class="icon-lg">📖</span> মাদ্রাসা</button>
+                </div>
+            </div>
+
+            <!-- ৭. খেলাধুলা ও লাইভ স্কোর -->
+            <div class="card card-rose">
+                <div class="card-title">⚽ খেলাধুলা ও লাইভ ক্রিকেট স্কোর</div>
+                <div class="grid-2">
+                    <button class="grid-btn" onclick="loadLiveCricketScore()"><span class="icon-lg">🔴</span> সব ম্যাচের লাইভ স্কোর</button>
+                    <button class="grid-btn" onclick="openCategory('টুর্নামেন্ট')"><span class="icon-lg">🏆</span> টুর্নামেন্ট</button>
+                    <button class="grid-btn" onclick="openCategory('জাতীয় দিবস')"><span class="icon-lg">🇧🇩</span> জাতীয় দিবস</button>
+                    <button class="grid-btn" onclick="openCategory('স্থানীয় অনুষ্ঠান')"><span class="icon-lg">🎉</span> স্থানীয় অনুষ্ঠান</button>
+                </div>
+            </div>
+
+            <!-- ৮. অভিযোগ ও মতামত -->
+            <div class="card card-amber">
+                <div class="card-title">📝 অভিযোগ ও মতামত</div>
+                <div class="grid-2">
+                    <button class="grid-btn" onclick="openFeedbackModal('অভিযোগ')"><span class="icon-lg">📩</span> অভিযোগ করুন</button>
+                    <button class="grid-btn" onclick="openFeedbackModal('মতামত')"><span class="icon-lg">💡</span> আপনার মতামত</button>
+                </div>
+            </div>
+
+            <!-- Admin Entry -->
+            <div class="admin-link">
+                <button onclick="promptAdminLogin()">🔒 এডমিন প্যানেল প্রবেশ</button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Category Data Modal -->
+    <div id="dataModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">তালিকা</h3>
+                <button class="close-btn" onclick="closeModal('dataModal')">✕</button>
+            </div>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <!-- Feedback Modal -->
+    <div id="feedbackModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="feedbackTitle">অভিযোগ / মতামত</h3>
+                <button class="close-btn" onclick="closeModal('feedbackModal')">✕</button>
+            </div>
+            <form onsubmit="submitFeedback(event)">
+                <input type="hidden" id="feedbackType" value="অভিযোগ">
+                <div class="form-group">
+                    <label>আপনার নাম</label>
+                    <input type="text" id="fbName" required placeholder="আপনার নাম লিখুন">
+                </div>
+                <div class="form-group">
+                    <label>ফোন নম্বর</label>
+                    <input type="tel" id="fbPhone" required placeholder="01700000000">
+                </div>
+                <div class="form-group">
+                    <label>বিস্তারিত লিখুন</label>
+                    <textarea id="fbMessage" rows="4" required placeholder="আপনার বার্তাটি এখানে লিখুন..."></textarea>
+                </div>
+                <button type="submit" class="btn-submit">জমা দিন</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Panel Modal -->
+    <div id="adminModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>🛠️ এডমিন প্যানেল</h3>
+                <button class="close-btn" onclick="closeModal('adminModal')">✕</button>
+            </div>
+            
+            <form id="contactForm" onsubmit="saveContact(event)">
+                <input type="hidden" id="editIndex" value="-1">
+                <div class="form-group">
+                    <label>ক্যাটাগরি নির্বাচন করুন</label>
+                    <select id="inputCategory" onchange="toggleExtraFields()">
+                        <option value="আজকের নোটিশ">আজকের স্ক্রোলিং নোটিশ</option>
+                        <option value="গণ্যমান্য ব্যক্তি">গণ্যমান্য ব্যক্তি</option>
+                        <option value="পুলিশ">পুলিশ (শেরপুর)</option>
+                        <option value="ফায়ার সার্ভিস">ফায়ার সার্ভিস</option>
+                        <option value="অ্যাম্বুলেন্স">অ্যাম্বুলেন্স</option>
+                        <option value="হাসপাতাল ও ক্লিনিক">হাসপাতাল/ল্যাব/ক্লিনিক</option>
+                        <option value="ডাক্তার">ডাক্তার</option>
+                        <option value="পল্লী বিদ্যুৎ">পল্লী বিদ্যুৎ</option>
+                        <option value="রক্তদাতা">রক্তদাতা</option>
+                        <option value="জরুরি হটলাইন">জরুরি হটলাইন</option>
+                        <option value="ইউনিয়ন নোটিশ">ইউনিয়ন নোটিশ</option>
+                        <option value="সরকারি ঘোষণা">সরকারি ঘোষণা</option>
+                        <option value="শিক্ষা নোটিশ">শিক্ষা নোটিশ</option>
+                        <option value="স্বেচ্ছাসেবক">স্বেচ্ছাসেবক</option>
+                        <option value="সাহায্য সহযোগিতা">সাহায্য সহযোগিতা</option>
+                        <option value="ত্রাণ কর্মসূচি">ত্রাণ কর্মসূচি</option>
+                        <option value="সামাজিক সংগঠন">সামাজিক সংগঠন</option>
+                        <option value="মসজিদ">মসজিদ</option>
+                        <option value="মাদ্রাসা">মাদ্রাসা</option>
+                        <option value="মাহফিল">মাহফিল</option>
+                        <option value="সাহরি ও ইফতার">সাহরি ও ইফতার (রমজান)</option>
+                        <option value="প্রাথমিক বিদ্যালয়">প্রাথমিক বিদ্যালয়</option>
+                        <option value="উচ্চ বিদ্যালয়">উচ্চ বিদ্যালয়</option>
+                        <option value="কলেজ">কলেজ</option>
+                        <option value="টুর্নামেন্ট">টুর্নামেন্ট</option>
+                        <option value="জাতীয় দিবস">জাতীয় দিবস</option>
+                        <option value="স্থানীয় অনুষ্ঠান">স্থানীয় অনুষ্ঠান</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label id="lblName">নাম / বিষয় / শিরোনাম</label>
+                    <input type="text" id="inputName" required placeholder="এখানে লিখুন">
+                </div>
+
+                <div class="form-group" id="groupBlood" style="display:none;">
+                    <label>রক্তের গ্রুপ</label>
+                    <select id="inputBlood">
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label id="lblPhone">ফোন নম্বর / বিস্তারিত নোটিশ</label>
+                    <input type="text" id="inputPhone" required placeholder="ফোন নম্বর বা নোটিশের তথ্য লিখুন">
+                </div>
+
+                <div class="form-group">
+                    <label id="lblRole">পদবী / অতিরিক্ত বিবরণ (ঐচ্ছিক)</label>
+                    <input type="text" id="inputRole" placeholder="অতিরিক্ত বিবরণ লিখুন">
+                </div>
+
+                <button type="submit" class="btn-submit">সংরক্ষণ করুন</button>
+            </form>
+
+            <h4 style="margin-top: 20px; font-size: 0.95rem; color: #0f172a;">📩 জমা পড়া অভিযোগ ও মতামত:</h4>
+            <div id="adminFeedbackList"></div>
+
+            <h4 style="margin-top: 20px; font-size: 0.95rem; color: #0f172a;">📌 তথ্য ডিরেক্টরি:</h4>
+            <div id="adminDataList"></div>
+        </div>
+    </div>
+
+    <script>
+        // Force Refresh Page Fix
+        function forceRefresh() {
+            window.location.href = window.location.pathname + '?v=' + new Date().getTime();
+        }
+
+        // Live Clock
+        function updateClock() {
+            const now = new Date();
+            const options = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            };
+            document.getElementById('liveClock').innerText = now.toLocaleDateString('bn-BD', options);
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // Weather Fetch
+        async function fetchSherpurWeather() {
+            try {
+                const res = await fetch('https://api.open-meteo.com/v1/forecast?latitude=25.0204&longitude=90.0153&current_weather=true');
+                const data = await res.json();
+                const temp = Math.round(data.current_weather.temperature);
+                document.getElementById('weatherTemp').innerText = temp + '°C';
+                document.getElementById('weatherStatus').innerText = 'বর্তমান তাপমাত্রা';
+            } catch(e) {
+                document.getElementById('weatherStatus').innerText = 'আবহাওয়া প্রস্তুত';
+                document.getElementById('weatherTemp').innerText = '৩০°C';
+            }
+        }
+        fetchSherpurWeather();
+
+        // Prayer Times
+        async function loadSherpurPrayers() {
+            document.getElementById('modalTitle').innerText = "আজকের নামাজের সময় (শেরপুর)";
+            const body = document.getElementById('modalBody');
+            body.innerHTML = "<p style='text-align:center;'>সময়সূচি লোড হচ্ছে...</p>";
+            document.getElementById('dataModal').style.display = 'flex';
+
+            try {
+                const res = await fetch('https://api.aladhan.com/v1/timingsByCity?city=Sherpur&country=Bangladesh&method=1');
+                const data = await res.json();
+                const t = data.data.timings;
+
+                body.innerHTML = `
+                    <div class="list-item"><div><h5>ফজর</h5></div><span class="phone">${t.Fajr} AM</span></div>
+                    <div class="list-item"><div><h5>জোহর</h5></div><span class="phone">${t.Dhuhr} PM</span></div>
+                    <div class="list-item"><div><h5>আসর</h5></div><span class="phone">${t.Asr} PM</span></div>
+                    <div class="list-item"><div><h5>মাগরিব</h5></div><span class="phone">${t.Maghrib} PM</span></div>
+                    <div class="list-item"><div><h5>এশা</h5></div><span class="phone">${t.Isha} PM</span></div>
+                `;
+            } catch(e) {
+                body.innerHTML = `<p style="text-align:center;">বর্তমানে সময়সূচি লোড করা সম্ভব হয়নি।</p>`;
+            }
+        }
+
+        // Fixed Live Cricket Score Frame & Links
+        function loadLiveCricketScore() {
+            document.getElementById('modalTitle').innerText = "🔴 লাইভ ক্রিকেট স্কোর ও আপডেট";
+            const body = document.getElementById('modalBody');
+            document.getElementById('dataModal').style.display = 'flex';
+
+            body.innerHTML = `
+                <p style="text-align:center; font-size:0.85rem; color:#475569; margin-bottom:10px;">
+                    বাংলাদেশ সহ বিশ্বমানের সকল ম্যাচের লাইভ স্কোর দেখতে নিচের লিংকে ট্যাপ করুন বা সরাসরি ব্রাউজারে দেখুন:
+                </p>
+                
+                <iframe src="https://m.cricbuzz.com/cricket-match/live-scores" class="iframe-container" title="Live Cricket Score"></iframe>
+                
+                <a href="https://www.google.com/search?q=cricket+live+score" target="_blank" class="backup-live-link">
+                    🌐 গুগল থেকে সরাসরি লাইভ স্কোর দেখুন
+                </a>
+                <a href="https://www.espncricinfo.com/live-cricket-score" target="_blank" class="backup-live-link" style="background:#0284c7;">
+                    🏏 ESPNcricinfo লাইভ ক্রিকেট স্কোর
+                </a>
+            `;
+        }
+
+        // Tahfizul Quran Loader
+        async function loadTahfizQuran() {
+            document.getElementById('modalTitle').innerText = "তাহফিজুল কোরআন (সূরা সমূহ)";
+            const body = document.getElementById('modalBody');
+            body.innerHTML = "<p style='text-align:center;'>কোরআন ফাইলের তালিকা লোড হচ্ছে...</p>";
+            document.getElementById('dataModal').style.display = 'flex';
+
+            try {
+                const res = await fetch('https://api.alquran.cloud/v1/surah');
+                const data = await res.json();
+                
+                body.innerHTML = data.data.slice(0, 20).map(s => `
+                    <div class="list-item" onclick="readSurah(${s.number}, '${s.englishName}')" style="cursor:pointer;">
+                        <div>
+                            <h5>${s.number}. ${s.name} (${s.englishName})</h5>
+                            <p>আয়াত সংখ্যা: ${s.numberOfAyahs}</p>
+                        </div>
+                        <button class="call-btn" style="background:#059669;">পড়ুন</button>
+                    </div>
+                `).join('');
+            } catch(e) {
+                body.innerHTML = `<p style="text-align:center; color:#ef4444;">কোরআন লোড করতে সমস্যা হয়েছে।</p>`;
+            }
+        }
+
+        async function readSurah(surahNum, surahName) {
+            document.getElementById('modalTitle').innerText = "সূরা " + surahName;
+            const body = document.getElementById('modalBody');
+            body.innerHTML = "<p style='text-align:center;'>আয়াত সমূহ লোড হচ্ছে...</p>";
+
+            try {
+                const res = await fetch(`https://api.alquran.cloud/v1/surah/${surahNum}`);
+                const data = await res.json();
+                
+                body.innerHTML = data.data.ayahs.map(a => `
+                    <div class="quran-ayah">
+                        ${a.text} <b style="color:#059669; font-size:0.9rem;">(${a.numberInSurah})</b>
+                    </div>
+                `).join('');
+            } catch(e) {
+                body.innerHTML = `<p style="text-align:center;">সূরা পড়তে সমস্যা হচ্ছে।</p>`;
+            }
+        }
+
+        // Contacts Data
+        const defaultContacts = [
+            { name: "জরুরি নোটিশ", phone: "আজকে কামারের চর ইউনিয়নে বিনামূল্যে রক্ত পরীক্ষার ক্যাম্প আয়োজন করা হয়েছে।", role: "সকলকে উপস্থিত থাকার জন্য বলা হচ্ছে।", category: "আজকের নোটিশ" },
+            { name: "শেরপুর সদর থানা", phone: "01320107850", role: "ডিউটি অফিসার, সদর থানা", category: "পুলিশ" },
+            { name: "শেরপুর ফায়ার সার্ভিস", phone: "01711234567", role: "স্টেশন অফিসার, শেরপুর", category: "ফায়ার সার্ভিস" }
+        ];
+
+        function getStoredContacts() {
+            const data = localStorage.getItem('kamarer_char_contacts_v6');
+            return data ? JSON.parse(data) : defaultContacts;
+        }
+
+        function saveStoredContacts(data) {
+            localStorage.setItem('kamarer_char_contacts_v6', JSON.stringify(data));
+            updateNoticeTicker();
+        }
+
+        function getStoredFeedback() {
+            const data = localStorage.getItem('kamarer_char_feedbacks_v6');
+            return data ? JSON.parse(data) : [];
+        }
+
+        function saveStoredFeedback(data) {
+            localStorage.setItem('kamarer_char_feedbacks_v6', JSON.stringify(data));
+        }
+
+        function updateNoticeTicker() {
+            const notices = getStoredContacts().filter(c => c.category === 'আজকের নোটিশ');
+            if(notices.length > 0) {
+                document.getElementById('tickerText').innerText = notices.map(n => n.name + ": " + n.phone).join(" | ");
+            } else {
+                document.getElementById('tickerText').innerText = "আজকের জরুরি নোটিশ ও আপডেট দেখতে এখানে ক্লিক করুন...";
+            }
+        }
+        updateNoticeTicker();
+
+        function openCategory(catName) {
+            const contacts = getStoredContacts().filter(c => c.category === catName);
+            document.getElementById('modalTitle').innerText = catName;
+            const body = document.getElementById('modalBody');
+            
+            if(contacts.length === 0) {
+                body.innerHTML = `<p style="text-align:center; color:#94a3b8; padding:30px 10px;">এই ক্যাটাগরিতে এখনো কোনো তথ্য যুক্ত করা হয়নি।</p>`;
+            } else {
+                body.innerHTML = contacts.map(c => `
+                    <div class="list-item">
+                        <div>
+                            ${c.blood ? `<span class="badge">গ্রুপ: ${c.blood}</span>` : ''}
+                            <h5>${c.name}</h5>
+                            <p>${c.role || ''}</p>
+                            <span class="phone">${c.phone}</span>
+                        </div>
+                        ${c.phone && c.phone.length >= 7 && !isNaN(c.phone) ? `<a href="tel:${c.phone}" class="call-btn">কল করুন</a>` : ''}
+                    </div>
+                `).join('');
+            }
+            document.getElementById('dataModal').style.display = 'flex';
+        }
+
+        function openFeedbackModal(type) {
+            document.getElementById('feedbackType').value = type;
+            document.getElementById('feedbackTitle').innerText = type + ' জমা দিন';
+            document.getElementById('feedbackModal').style.display = 'flex';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        function submitFeedback(e) {
+            e.preventDefault();
+            const feedbacks = getStoredFeedback();
+            const newFeedback = {
+                type: document.getElementById('feedbackType').value,
+                name: document.getElementById('fbName').value,
+                phone: document.getElementById('fbPhone').value,
+                message: document.getElementById('fbMessage').value,
+                date: new Date().toLocaleDateString('bn-BD')
+            };
+
+            feedbacks.push(newFeedback);
+            saveStoredFeedback(feedbacks);
+
+            alert(newFeedback.type + " সফলভাবে পাঠানো হয়েছে!");
+            document.getElementById('fbName').value = '';
+            document.getElementById('fbPhone').value = '';
+            document.getElementById('fbMessage').value = '';
+            closeModal('feedbackModal');
+        }
+
+        function promptAdminLogin() {
+            const code = prompt("এডমিন প্যানেলের পাসকোড দিন:");
+            if (code === "6822") {
+                renderAdminList();
+                renderFeedbackList();
+                document.getElementById('adminModal').style.display = 'flex';
+            } else if (code !== null) {
+                alert("ভুল পাসকোড!");
+            }
+        }
+
+        function toggleExtraFields() {
+            const cat = document.getElementById('inputCategory').value;
+            const bloodGroup = document.getElementById('groupBlood');
+            bloodGroup.style.display = (cat === 'রক্তদাতা') ? 'block' : 'none';
+        }
+
+        function renderAdminList() {
+            const contacts = getStoredContacts();
+            const listContainer = document.getElementById('adminDataList');
+            
+            if(contacts.length === 0) {
+                listContainer.innerHTML = '<p style="text-align:center; color:#888; font-size:0.8rem; padding:10px;">কোনো তথ্য নেই</p>';
+                return;
+            }
+
+            listContainer.innerHTML = contacts.map((item, index) => `
+                <div class="admin-item">
+                    <div>
+                        <b>${item.name}</b> <span style="color:#2563eb;">(${item.category})</span><br>
+                        <small style="color:#64748b;">${item.phone} ${item.role ? '| '+item.role : ''}</small>
+                    </div>
+                    <div class="admin-actions">
+                        <button class="btn-edit" onclick="editContact(${index})">এডিট</button>
+                        <button class="btn-delete" onclick="deleteContact(${index})">ডিলিট</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderFeedbackList() {
+            const feedbacks = getStoredFeedback();
+            const listContainer = document.getElementById('adminFeedbackList');
+
+            if(feedbacks.length === 0) {
+                listContainer.innerHTML = '<p style="text-align:center; color:#888; font-size:0.8rem; padding:10px;">নতুন কোনো তথ্য নেই</p>';
+                return;
+            }
+
+            listContainer.innerHTML = feedbacks.map((fb, idx) => `
+                <div class="admin-item" style="flex-direction:column; align-items:flex-start;">
+                    <b>[${fb.type}] ${fb.name} (${fb.date})</b>
+                    <small>📞 ${fb.phone}</small>
+                    <p style="margin-top:4px;">"${fb.message}"</p>
+                    <button class="btn-delete" style="margin-top:6px;" onclick="deleteFeedback(${idx})">মুছে ফেলুন</button>
+                </div>
+            `).join('');
+        }
+
+        function saveContact(e) {
+            e.preventDefault();
+            const contacts = getStoredContacts();
+            const editIndex = parseInt(document.getElementById('editIndex').value);
+            const category = document.getElementById('inputCategory').value;
+
+            const newContact = {
+                category: category,
+                name: document.getElementById('inputName').value,
+                phone: document.getElementById('inputPhone').value,
+                role: document.getElementById('inputRole').value,
+                blood: category === 'রক্তদাতা' ? document.getElementById('inputBlood').value : ''
+            };
+
+            if (editIndex >= 0) {
+                contacts[editIndex] = newContact;
+            } else {
+                contacts.push(newContact);
+            }
+
+            saveStoredContacts(contacts);
+            renderAdminList();
+            resetForm();
+            alert("তথ্য সংরক্ষণ করা হয়েছে!");
+        }
+
+        function editContact(index) {
+            const item = getStoredContacts()[index];
+            document.getElementById('editIndex').value = index;
+            document.getElementById('inputCategory').value = item.category;
+            toggleExtraFields();
+            document.getElementById('inputName').value = item.name;
+            document.getElementById('inputPhone').value = item.phone;
+            document.getElementById('inputRole').value = item.role || '';
+            if(item.blood) {
+                document.getElementById('inputBlood').value = item.blood;
+            }
+        }
+
+        function deleteContact(index) {
+            if(confirm("আপনি কি এটি মুছে ফেলতে চান?")) {
+                const contacts = getStoredContacts();
+                contacts.splice(index, 1);
+                saveStoredContacts(contacts);
+                renderAdminList();
+            }
+        }
+
+        function deleteFeedback(index) {
+            if(confirm("আপনি কি এটি মুছে ফেলতে চান?")) {
+                const feedbacks = getStoredFeedback();
+                feedbacks.splice(index, 1);
+                saveStoredFeedback(feedbacks);
+                renderFeedbackList();
+            }
+        }
+
+        function resetForm() {
+            document.getElementById('contactForm').reset();
+            document.getElementById('editIndex').value = "-1";
+            toggleExtraFields();
+        }
+    </script>
+</body>
+</html>
