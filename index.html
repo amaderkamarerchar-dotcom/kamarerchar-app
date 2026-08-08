@@ -1,32 +1,562 @@
-<!DOCTYPE html><html lang="bn"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>আমাদের কামারের চর - সব তথ্য সব সেবা এক সাথে</title><style>
-@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap');*{box-sizing:border-box;margin:0;padding:0;font-family:'Hind Siliguri','Kalpurush',sans-serif}body{background:#f3f4f6;color:#1f2937;padding-bottom:50px}.container{max-width:500px;margin:auto}header{background:linear-gradient(135deg,#1e3a8a,#3b82f6);color:#fff;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100}header h1{font-size:1.1rem}.btn-refresh{background:#10b981;color:#fff;border:0;padding:6px 14px;border-radius:20px}.banner{background:#0f172a;color:#fff;text-align:center;padding:20px 15px 15px}.banner h2{font-size:1.8rem}.banner p{color:#94a3b8}.live-datetime{margin-top:12px;background:#1e293b;display:inline-block;padding:8px 18px;border-radius:25px;color:#facc15;border:2px solid #38bdf8}.notice-ticker{background:#b91c1c;color:#fff;padding:8px 12px;display:flex;overflow:hidden}.notice-ticker span{background:#facc15;color:#0f172a;padding:2px 8px;margin-right:8px}.content{padding:12px}.card{background:#fff;border-radius:16px;padding:14px;margin-bottom:16px;box-shadow:0 4px 12px #00000008;border-left:5px solid #2563eb}.card-emerald{border-left-color:#059669}.card-amber{border-left-color:#d97706}.card-purple{border-left-color:#7c3aed}.card-rose{border-left-color:#e11d48}.card-title{font-size:1.1rem;font-weight:700;margin-bottom:12px}.weather-box{background:linear-gradient(135deg,#0284c7,#0369a1);color:#fff;padding:12px;border-radius:12px;display:flex;justify-content:space-between;align-items:center}.weather-temp{font-size:1.8rem;font-weight:800}.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.grid-btn{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:12px 8px;text-align:center;cursor:pointer;font-size:.88rem;font-weight:600;color:#334155;display:flex;flex-direction:column;align-items:center;gap:4px}.btn-full{grid-column:span 2;background:#ecfdf5}.icon-lg{font-size:1.4rem}.admin-link{text-align:center;margin-top:25px}.admin-link button{background:none;border:0;color:#64748b;text-decoration:underline}.modal{display:none;position:fixed;inset:0;background:#0f172aaa;z-index:1000;justify-content:center;align-items:flex-end}.modal-content{background:#fff;width:100%;max-width:500px;max-height:88vh;overflow:auto;padding:20px;border-radius:24px 24px 0 0}.modal-header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eee;padding-bottom:12px;margin-bottom:16px}.close-btn{background:#f1f5f9;border:0;width:32px;height:32px;border-radius:50%}.list-item{border:1px solid #e2e8f0;background:#f8fafc;border-radius:12px;padding:12px 14px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}.list-item h5{font-size:1rem}.list-item p{font-size:.85rem;color:#475569}.badge{display:inline-block;background:#fee2e2;color:#dc2626;padding:2px 8px;border-radius:6px;font-size:.75rem}.phone{font-size:.9rem;color:#2563eb;font-weight:700;display:block;margin-top:3px}.call-btn{background:#10b981;color:#fff;text-decoration:none;padding:8px 16px;border-radius:10px;font-size:.85rem;font-weight:700}.form-group{margin-bottom:12px}.form-group label{display:block;font-size:.82rem;margin-bottom:4px;font-weight:600}.form-group input,.form-group select,.form-group textarea{width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:8px}.btn-submit,.btn-login{width:100%;color:#fff;padding:12px;border:0;border-radius:10px;font-weight:700;cursor:pointer}.btn-submit{background:#2563eb}.btn-login{background:#10b981}.btn-logout{background:#ef4444;color:#fff;border:0;padding:7px 12px;border-radius:8px}.admin-item{background:#f1f5f9;border-radius:8px;padding:10px;margin-top:8px;display:flex;justify-content:space-between;align-items:center;font-size:.85rem}.admin-actions{display:flex;gap:4px}.btn-delete{background:#ef4444;color:#fff;border:0;padding:4px 8px;border-radius:6px}.btn-edit{background:#0284c7;color:#fff;border:0;padding:4px 8px;border-radius:6px}.quran-ayah{background:#fff8dc;padding:10px;border-radius:8px;margin-bottom:8px;direction:rtl;font-size:1.1rem}.backup-live-link{display:block;background:#e11d48;color:#fff;text-align:center;padding:12px;border-radius:10px;text-decoration:none;margin-top:10px}.status{padding:9px;border-radius:8px;background:#ecfdf5;color:#047857;margin-bottom:12px;display:none}
-</style></head><body><div class="container"><header><h1>📱 আমাদের কামারের চর</h1><button class="btn-refresh" onclick="location.reload()">রিফ্রেশ করুন</button></header><div class="banner"><h2>আমাদের কামারের চর</h2><p>সব তথ্য সব সেবা এক সাথে</p><div class="live-datetime" id="liveClock">📅 তারিখ ও সময় লোড হচ্ছে...</div></div><div class="notice-ticker" onclick="openCategory('আজকের নোটিশ')"><span>নোটিশ:</span><marquee id="tickerText">আজকের জরুরি নোটিশ ও আপডেট দেখতে এখানে ক্লিক করুন...</marquee></div><div class="content">
-<div class="card card-purple"><div class="card-title">🌤️ শেরপুর আবহাওয়া আপডেট</div><div class="weather-box"><div><h4 id="weatherStatus">আবহাওয়া লোড হচ্ছে...</h4><p>শেরপুর জেলা, বাংলাদেশ</p></div><div class="weather-temp" id="weatherTemp">--°C</div></div></div>
-<div class="card card-emerald"><div class="card-title">👤 গণ্যমান্য ডিরেক্টরি</div><div class="grid-2"><button class="grid-btn btn-full" onclick="openCategory('গণ্যমান্য ব্যক্তি')">👥 গণ্যমান্য ব্যক্তিবর্গ</button></div></div>
-<div class="card"><div class="card-title">🚑 জরুরি সেবা (শেরপুর জেলা)</div><div class="grid-2"><button class="grid-btn" onclick="openCategory('পুলিশ')">🛡️ পুলিশ (শেরপুর)</button><button class="grid-btn" onclick="openCategory('ফায়ার সার্ভিস')">🧯 ফায়ার সার্ভিস</button><button class="grid-btn" onclick="openCategory('অ্যাম্বুলেন্স')">🚐 অ্যাম্বুলেন্স</button><button class="grid-btn" onclick="openCategory('হাসপাতাল ও ক্লিনিক')">🏥 হাসপাতাল ও ডায়াগনস্টিক</button><button class="grid-btn" onclick="openCategory('ডাক্তার')">👨‍⚕️ বিশেষজ্ঞ ডাক্তার</button><button class="grid-btn" onclick="openCategory('পল্লী বিদ্যুৎ')">⚡ পল্লী বিদ্যুৎ</button><button class="grid-btn" onclick="openCategory('রক্তদাতা')">🩸 রক্তদাতা তালিকা</button><button class="grid-btn" onclick="openCategory('জরুরি হটলাইন')">📞 জরুরি হটলাইন</button></div></div>
-<div class="card card-amber"><div class="card-title">📜 নোটিশ ও আপডেট</div><div class="grid-3"><button class="grid-btn" onclick="openCategory('আজকের নোটিশ')">📢 আজকের নোটিশ</button><button class="grid-btn" onclick="openCategory('ইউনিয়ন নোটিশ')">🏛️ ইউনিয়ন নোটিশ</button><button class="grid-btn" onclick="openCategory('সরকারি ঘোষণা')">📜 সরকারি ঘোষণা</button><button class="grid-btn" onclick="openCategory('শিক্ষা নোটিশ')">🎓 শিক্ষা নোটিশ</button></div></div>
-<div class="card card-emerald"><div class="card-title">🕌 ধর্মীয় তথ্য ও তাহফিজুল কোরআন</div><div class="grid-3"><button class="grid-btn" onclick="loadTahfizQuran()">📖 তাহফিজুল কোরআন</button><button class="grid-btn" onclick="loadSherpurPrayers()">⏰ নামাজের সময়</button><button class="grid-btn" onclick="openCategory('মসজিদ')">🕌 মসজিদ</button><button class="grid-btn" onclick="openCategory('মাদ্রাসা')">🏫 মাদ্রাসা</button><button class="grid-btn" onclick="openCategory('মাহফিল')">🎙️ মাহফিল</button><button class="grid-btn" onclick="openCategory('সাহরি ও ইফতার')">📅 সাহরি ও ইফতার</button></div></div>
-<div class="card card-purple"><div class="card-title">🤝 সামাজিক সেবা</div><div class="grid-2"><button class="grid-btn" onclick="openCategory('স্বেচ্ছাসেবক')">🙋‍♂️ স্বেচ্ছাসেবক</button><button class="grid-btn" onclick="openCategory('সাহায্য সহযোগিতা')">🤲 সাহায্য সহযোগিতা</button><button class="grid-btn" onclick="openCategory('ত্রাণ কর্মসূচি')">📦 ত্রাণ কর্মসূচি</button><button class="grid-btn" onclick="openCategory('সামাজিক সংগঠন')">🏢 সামাজিক সংগঠন</button></div></div>
-<div class="card"><div class="card-title">🏫 প্রতিষ্ঠান সমূহ</div><div class="grid-2"><button class="grid-btn" onclick="openCategory('প্রাথমিক বিদ্যালয়')">🏫 প্রাথমিক বিদ্যালয়</button><button class="grid-btn" onclick="openCategory('উচ্চ বিদ্যালয়')">🏫 উচ্চ বিদ্যালয়</button><button class="grid-btn" onclick="openCategory('কলেজ')">🏛️ কলেজ</button><button class="grid-btn" onclick="openCategory('মাদ্রাসা')">📖 মাদ্রাসা</button></div></div>
-<div class="card card-rose"><div class="card-title">⚽ খেলাধুলা ও লাইভ ক্রিকেট স্কোর</div><div class="grid-2"><button class="grid-btn" onclick="loadLiveCricketScore()">🔴 সব ম্যাচের লাইভ স্কোর</button><button class="grid-btn" onclick="openCategory('টুর্নামেন্ট')">🏆 টুর্নামেন্ট</button><button class="grid-btn" onclick="openCategory('জাতীয় দিবস')">🇧🇩 জাতীয় দিবস</button><button class="grid-btn" onclick="openCategory('স্থানীয় অনুষ্ঠান')">🎉 স্থানীয় অনুষ্ঠান</button></div></div>
-<div class="card card-amber"><div class="card-title">📝 অভিযোগ ও মতামত</div><div class="grid-2"><button class="grid-btn" onclick="openFeedbackModal('অভিযোগ')">📩 অভিযোগ করুন</button><button class="grid-btn" onclick="openFeedbackModal('মতামত')">💡 আপনার মতামত</button></div></div><div class="admin-link"><button onclick="openAdminLogin()">🔒 এডমিন প্যানেল প্রবেশ</button></div></div></div>
-<div id="dataModal" class="modal"><div class="modal-content"><div class="modal-header"><h3 id="modalTitle">তালিকা</h3><button class="close-btn" onclick="closeModal('dataModal')">✕</button></div><div id="modalBody"></div></div></div>
-<div id="feedbackModal" class="modal"><div class="modal-content"><div class="modal-header"><h3 id="feedbackTitle">অভিযোগ / মতামত</h3><button class="close-btn" onclick="closeModal('feedbackModal')">✕</button></div><form onsubmit="submitFeedback(event)"><input type="hidden" id="feedbackType" value="অভিযোগ"><div class="form-group"><label>আপনার নাম</label><input id="fbName" required></div><div class="form-group"><label>ফোন নম্বর</label><input id="fbPhone" type="tel" required></div><div class="form-group"><label>বিস্তারিত লিখুন</label><textarea id="fbMessage" rows="4" required></textarea></div><button class="btn-submit">জমা দিন</button></form></div></div>
-<div id="loginModal" class="modal"><div class="modal-content"><div class="modal-header"><h3>🔐 এডমিন লগইন</h3><button class="close-btn" onclick="closeModal('loginModal')">✕</button></div><div id="loginError" style="display:none;background:#fee2e2;color:#b91c1c;padding:9px;border-radius:8px;margin-bottom:12px"></div><form onsubmit="adminLogin(event)"><div class="form-group"><label>এডমিন Gmail</label><input type="email" id="adminEmail" value="mdm635292@gmail.com" required></div><div class="form-group"><label>পাসওয়ার্ড</label><input type="password" id="adminPassword" required placeholder="আপনার Firebase password"></div><button class="btn-login" id="loginBtn">লগইন করুন</button></form></div></div>
-<div id="adminModal" class="modal"><div class="modal-content"><div class="modal-header"><div><h3>🛠️ এডমিন প্যানেল</h3><small id="adminUser"></small></div><div><button class="btn-logout" onclick="adminLogout()">লগআউট</button><button class="close-btn" onclick="closeModal('adminModal')">✕</button></div></div><div id="saveStatus" class="status">তথ্য সফলভাবে Firebase-এ সংরক্ষিত হয়েছে। এখন সবাই দেখতে পারবে।</div>
-<form id="contactForm" onsubmit="saveContact(event)"><input type="hidden" id="editKey"><div class="form-group"><label>ক্যাটাগরি নির্বাচন করুন</label><select id="inputCategory" onchange="toggleExtraFields()"><option>আজকের নোটিশ</option><option>গণ্যমান্য ব্যক্তি</option><option>পুলিশ</option><option>ফায়ার সার্ভিস</option><option>অ্যাম্বুলেন্স</option><option>হাসপাতাল ও ক্লিনিক</option><option>ডাক্তার</option><option>পল্লী বিদ্যুৎ</option><option>রক্তদাতা</option><option>জরুরি হটলাইন</option><option>ইউনিয়ন নোটিশ</option><option>সরকারি ঘোষণা</option><option>শিক্ষা নোটিশ</option><option>স্বেচ্ছাসেবক</option><option>সাহায্য সহযোগিতা</option><option>ত্রাণ কর্মসূচি</option><option>সামাজিক সংগঠন</option><option>মসজিদ</option><option>মাদ্রাসা</option><option>মাহফিল</option><option>সাহরি ও ইফতার</option><option>প্রাথমিক বিদ্যালয়</option><option>উচ্চ বিদ্যালয়</option><option>কলেজ</option><option>টুর্নামেন্ট</option><option>জাতীয় দিবস</option><option>স্থানীয় অনুষ্ঠান</option></select></div><div class="form-group"><label>নাম / বিষয় / শিরোনাম</label><input id="inputName" required></div><div class="form-group" id="groupBlood" style="display:none"><label>রক্তের গ্রুপ</label><select id="inputBlood"><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>O+</option><option>O-</option><option>AB+</option><option>AB-</option></select></div><div class="form-group"><label>ফোন নম্বর / বিস্তারিত নোটিশ</label><input id="inputPhone" required></div><div class="form-group"><label>পদবী / অতিরিক্ত বিবরণ</label><input id="inputRole"></div><button class="btn-submit">সংরক্ষণ করুন</button></form><h4 style="margin-top:20px">📩 জমা পড়া অভিযোগ ও মতামত:</h4><div id="adminFeedbackList"></div><h4 style="margin-top:20px">📌 তথ্য ডিরেক্টরি:</h4><div id="adminDataList"></div></div></div>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script><script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script><script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script><script>
-const firebaseConfig={apiKey:"AIzaSyDRlnO6GpIEiYDfPSx25c77ffjGqqKOFbY",authDomain:"kamarerchar.firebaseapp.com",projectId:"kamarerchar",storageBucket:"kamarerchar.firebasestorage.app",messagingSenderId:"1037351545258",appId:"1:1037351545258:web:b38c8c310b520d945c63d3",measurementId:"G-DMRK5NRBVM"};firebase.initializeApp(firebaseConfig);const auth=firebase.auth(),db=firebase.database(),contactsRef=db.ref("contacts"),feedbacksRef=db.ref("feedbacks");let contacts={};
-function updateClock(){document.getElementById('liveClock').innerText=new Date().toLocaleDateString('bn-BD',{weekday:'long',year:'numeric',month:'long',day:'numeric',hour:'2-digit',minute:'2-digit',second:'2-digit'})}setInterval(updateClock,1000);updateClock();
-async function fetchSherpurWeather(){try{let r=await fetch('https://api.open-meteo.com/v1/forecast?latitude=25.0204&longitude=90.0153&current_weather=true'),d=await r.json();weatherTemp.innerText=Math.round(d.current_weather.temperature)+'°C';weatherStatus.innerText='বর্তমান তাপমাত্রা'}catch(e){weatherStatus.innerText='আবহাওয়া প্রস্তুত'}}fetchSherpurWeather();
-function arr(){return Object.entries(contacts).map(([key,v])=>({...v,key}))}function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}function closeModal(id){document.getElementById(id).style.display='none'}function phone(s){return /^[0-9+()\-\s]{7,}$/.test(String(s||''))}
-contactsRef.on('value',s=>{contacts=s.val()||{};let n=arr().filter(x=>x.category==='আজকের নোটিশ');tickerText.innerText=n.length?n.map(x=>x.name+': '+x.phone).join(' | '):'আজকের জরুরি নোটিশ ও আপডেট দেখতে এখানে ক্লিক করুন...';if(auth.currentUser)renderAdminList()});
-function openCategory(cat){let a=arr().filter(x=>x.category===cat);modalTitle.innerText=cat;modalBody.innerHTML=a.length?a.map(c=>`<div class="list-item"><div>${c.blood?`<span class="badge">গ্রুপ: ${esc(c.blood)}</span>`:''}<h5>${esc(c.name)}</h5><p>${esc(c.role||'')}</p><span class="phone">${esc(c.phone)}</span></div>${phone(c.phone)?`<a class="call-btn" href="tel:${encodeURIComponent(c.phone)}">কল করুন</a>`:''}</div>`).join(''):'<p style="text-align:center;padding:30px;color:#94a3b8">এই ক্যাটাগরিতে এখনো কোনো তথ্য যুক্ত করা হয়নি।</p>';dataModal.style.display='flex'}
-async function loadSherpurPrayers(){modalTitle.innerText='আজকের নামাজের সময় (শেরপুর)';modalBody.innerHTML='<p style="text-align:center">সময়সূচি লোড হচ্ছে...</p>';dataModal.style.display='flex';try{let d=await (await fetch('https://api.aladhan.com/v1/timingsByCity?city=Sherpur&country=Bangladesh&method=1')).json(),t=d.data.timings,n=['ফজর','জোহর','আসর','মাগরিব','এশা'],k=['Fajr','Dhuhr','Asr','Maghrib','Isha'];modalBody.innerHTML=k.map((x,i)=>`<div class="list-item"><h5>${n[i]}</h5><span class="phone">${t[x]}</span></div>`).join('')}catch(e){modalBody.innerHTML='<p style="text-align:center">বর্তমানে সময়সূচি লোড করা সম্ভব হয়নি।</p>'}}
-async function loadTahfizQuran(){modalTitle.innerText='তাহফিজুল কোরআন (সূরা সমূহ)';modalBody.innerHTML='<p style="text-align:center">কোরআন লোড হচ্ছে...</p>';dataModal.style.display='flex';try{let d=await (await fetch('https://api.alquran.cloud/v1/surah')).json();modalBody.innerHTML=d.data.slice(0,20).map(s=>`<div class="list-item" onclick="readSurah(${s.number})"><div><h5>${s.number}. ${esc(s.name)}</h5><p>আয়াত সংখ্যা: ${s.numberOfAyahs}</p></div><span class="call-btn">পড়ুন</span></div>`).join('')}catch(e){modalBody.innerHTML='<p>কোরআন লোড করতে সমস্যা হয়েছে।</p>'}}async function readSurah(n){modalBody.innerHTML='<p style="text-align:center">আয়াত লোড হচ্ছে...</p>';try{let d=await (await fetch('https://api.alquran.cloud/v1/surah/'+n)).json();modalBody.innerHTML=d.data.ayahs.map(a=>`<div class="quran-ayah">${esc(a.text)} <b>(${a.numberInSurah})</b></div>`).join('')}catch(e){modalBody.innerHTML='<p>সূরা পড়তে সমস্যা হচ্ছে।</p>'}}
-function loadLiveCricketScore(){modalTitle.innerText='🔴 লাইভ ক্রিকেট স্কোর ও আপডেট';modalBody.innerHTML='<p style="text-align:center">লাইভ স্কোর দেখতে নিচের লিংকে ট্যাপ করুন।</p><a class="backup-live-link" target="_blank" href="https://www.google.com/search?q=cricket+live+score">🌐 গুগল লাইভ স্কোর</a><a class="backup-live-link" target="_blank" href="https://www.espncricinfo.com/live-cricket-score">🏏 ESPNcricinfo</a>';dataModal.style.display='flex'}
-function openFeedbackModal(t){feedbackType.value=t;feedbackTitle.innerText=t+' জমা দিন';feedbackModal.style.display='flex'}async function submitFeedback(e){e.preventDefault();try{await feedbacksRef.push({type:feedbackType.value,name:fbName.value,phone:fbPhone.value,message:fbMessage.value,date:new Date().toLocaleDateString('bn-BD')});alert('সফলভাবে পাঠানো হয়েছে!');e.target.reset();closeModal('feedbackModal')}catch(x){alert('পাঠাতে সমস্যা হয়েছে। আবার চেষ্টা করুন।')}}
-function openAdminLogin(){if(auth.currentUser){renderAdminList();renderFeedbackList();adminUser.innerText=auth.currentUser.email;adminModal.style.display='flex'}else{loginError.style.display='none';loginModal.style.display='flex'}}async function adminLogin(e){e.preventDefault();loginBtn.disabled=true;loginBtn.innerText='লগইন হচ্ছে...';try{let email=adminEmail.value.trim();await auth.signInWithEmailAndPassword(email,adminPassword.value);closeModal('loginModal');adminPassword.value='';adminUser.innerText=email;renderAdminList();renderFeedbackList();adminModal.style.display='flex'}catch(x){loginError.innerText='Gmail বা পাসওয়ার্ড সঠিক নয়। Firebase Authentication-এ অ্যাকাউন্টটি তৈরি আছে কি না দেখুন।';loginError.style.display='block'}finally{loginBtn.disabled=false;loginBtn.innerText='লগইন করুন'}}async function adminLogout(){await auth.signOut();closeModal('adminModal');alert('এডমিন লগআউট হয়েছে।')}auth.onAuthStateChanged(u=>{if(u)adminUser.innerText=u.email});
-function toggleExtraFields(){groupBlood.style.display=inputCategory.value==='রক্তদাতা'?'block':'none'}async function saveContact(e){e.preventDefault();if(!auth.currentUser)return alert('আগে এডমিন লগইন করুন');let key=editKey.value,cat=inputCategory.value,o={category:cat,name:inputName.value.trim(),phone:inputPhone.value.trim(),role:inputRole.value.trim(),blood:cat==='রক্তদাতা'?inputBlood.value:'',updatedAt:firebase.database.ServerValue.TIMESTAMP};try{if(key)await contactsRef.child(key).update(o);else await contactsRef.push(o);saveStatus.style.display='block';setTimeout(()=>saveStatus.style.display='none',2500);resetForm();renderAdminList()}catch(x){alert('সংরক্ষণ হয়নি। Firebase Rules/লগইন পরীক্ষা করুন।')}}function renderAdminList(){let a=arr();adminDataList.innerHTML=a.length?a.map(x=>`<div class="admin-item"><div><b>${esc(x.name)}</b> <span style="color:#2563eb">(${esc(x.category)})</span><br><small>${esc(x.phone)} ${x.role?'| '+esc(x.role):''}</small></div><div class="admin-actions"><button class="btn-edit" onclick="editContact('${x.key}')">এডিট</button><button class="btn-delete" onclick="deleteContact('${x.key}')">ডিলিট</button></div></div>`).join(''):'<p style="text-align:center;color:#888;padding:10px">কোনো তথ্য নেই</p>'}function editContact(k){let x=contacts[k];if(!x)return;editKey.value=k;inputCategory.value=x.category;toggleExtraFields();inputName.value=x.name||'';inputPhone.value=x.phone||'';inputRole.value=x.role||'';if(x.blood)inputBlood.value=x.blood}async function deleteContact(k){if(confirm('আপনি কি এটি মুছে ফেলতে চান?'))try{await contactsRef.child(k).remove()}catch(e){alert('ডিলিট করার অনুমতি নেই।')}}function resetForm(){contactForm.reset();editKey.value='';toggleExtraFields()}
-function renderFeedbackList(){if(!auth.currentUser)return;feedbacksRef.once('value').then(s=>{let a=Object.entries(s.val()||{});adminFeedbackList.innerHTML=a.length?a.map(([k,x])=>`<div class="admin-item" style="flex-direction:column;align-items:flex-start"><b>[${esc(x.type)}] ${esc(x.name)} (${esc(x.date||'')})</b><small>📞 ${esc(x.phone)}</small><p>"${esc(x.message)}"</p><button class="btn-delete" onclick="deleteFeedback('${k}')">মুছে ফেলুন</button></div>`).join(''):'<p style="text-align:center;color:#888;padding:10px">নতুন কোনো তথ্য নেই</p>'})}async function deleteFeedback(k){if(confirm('আপনি কি এটি মুছে ফেলতে চান?'))try{await feedbacksRef.child(k).remove();renderFeedbackList()}catch(e){alert('ডিলিট করার অনুমতি নেই।')}}
-</script></body></html>
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>আমাদের কামারের চর - সব তথ্য সব সেবা এক সাথে</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700;800&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Hind Siliguri','Kalpurush',sans-serif}
+:root{
+ --blue:#2563eb;--cyan:#0891b2;--green:#059669;--emerald:#10b981;
+ --orange:#f59e0b;--purple:#7c3aed;--pink:#db2777;--red:#e11d48;
+ --text:#172033;--muted:#64748b;--bg:#eef3f9;--white:#fff;
+}
+body{
+ background:linear-gradient(180deg,#e9f1ff 0%,#f7f9fc 38%,#eef3f8 100%);
+ color:var(--text);padding-bottom:35px;min-height:100vh;
+}
+.container{max-width:540px;margin:0 auto;background:transparent;overflow:hidden}
+
+/* Header */
+header{
+ background:linear-gradient(135deg,#172554 0%,#1d4ed8 48%,#06b6d4 100%);
+ color:#fff;padding:13px 15px;display:flex;justify-content:space-between;align-items:center;
+ position:sticky;top:0;z-index:100;box-shadow:0 5px 18px rgba(15,23,42,.25)
+}
+header h1{font-size:1.08rem;font-weight:800;display:flex;align-items:center;gap:7px;text-shadow:0 2px 5px rgba(0,0,0,.2)}
+.btn-refresh{
+ background:rgba(255,255,255,.16);color:#fff;border:1px solid rgba(255,255,255,.3);
+ padding:7px 13px;border-radius:25px;font-size:.82rem;font-weight:700;cursor:pointer;
+ backdrop-filter:blur(8px);box-shadow:0 3px 10px rgba(0,0,0,.15);transition:.2s
+}
+.btn-refresh:active{transform:scale(.94)}
+
+/* Hero */
+.banner{
+ position:relative;overflow:hidden;text-align:center;color:#fff;padding:24px 15px 21px;
+ background:linear-gradient(135deg,#0f172a,#172554 45%,#0c4a6e)
+}
+.banner:before,.banner:after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.06)}
+.banner:before{width:180px;height:180px;left:-80px;top:-80px}.banner:after{width:230px;height:230px;right:-120px;bottom:-140px}
+.banner h2{position:relative;font-size:1.85rem;font-weight:800;letter-spacing:.3px;text-shadow:0 3px 12px rgba(0,0,0,.3)}
+.banner p{position:relative;color:#cbd5e1;font-size:.88rem;margin-top:1px}
+.live-datetime{
+ position:relative;margin-top:13px;background:rgba(15,23,42,.7);display:inline-block;padding:8px 15px;
+ border-radius:30px;font-size:.92rem;font-weight:700;color:#fde047;border:1px solid rgba(56,189,248,.7);
+ box-shadow:0 0 20px rgba(34,211,238,.16);backdrop-filter:blur(8px)
+}
+
+/* Notice */
+.notice-ticker{
+ background:linear-gradient(90deg,#be123c,#e11d48,#be123c);color:#fff;padding:8px 10px;font-size:.86rem;
+ font-weight:600;cursor:pointer;display:flex;align-items:center;overflow:hidden;border-bottom:2px solid #9f1239
+}
+.notice-ticker span{background:#fde047;color:#451a03;padding:3px 8px;border-radius:7px;font-size:.75rem;font-weight:800;margin-right:7px;white-space:nowrap;box-shadow:0 2px 7px rgba(0,0,0,.15)}
+marquee{width:100%}
+
+/* Content / cards */
+.content{padding:12px 11px}
+.card{
+ background:rgba(255,255,255,.92);border-radius:19px;padding:14px;margin-bottom:14px;
+ box-shadow:0 7px 22px rgba(30,41,59,.07);border:1px solid rgba(255,255,255,.8);
+ border-left:5px solid var(--blue);position:relative;overflow:hidden
+}
+.card:after{content:"";position:absolute;width:90px;height:90px;border-radius:50%;right:-55px;top:-55px;background:rgba(37,99,235,.055)}
+.card-emerald{border-left-color:#059669}.card-amber{border-left-color:#f59e0b}
+.card-purple{border-left-color:#7c3aed}.card-rose{border-left-color:#e11d48}
+.card-title{
+ font-size:1.08rem;font-weight:800;margin-bottom:11px;color:#111827;display:flex;align-items:center;gap:8px;
+ position:relative;z-index:2
+}
+.card-title:first-letter{font-size:1.25rem}
+
+/* Weather */
+.weather-box{
+ background:linear-gradient(135deg,#0284c7,#0369a1 55%,#0e7490);color:#fff;padding:13px;border-radius:15px;
+ display:flex;justify-content:space-between;align-items:center;box-shadow:inset 0 1px rgba(255,255,255,.25),0 5px 15px rgba(2,132,199,.2)
+}
+.weather-temp{font-size:1.85rem;font-weight:800;text-shadow:0 2px 5px rgba(0,0,0,.18)}
+
+/* Grids */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.grid-btn{
+ background:linear-gradient(145deg,#fff,#f8fafc);border:1px solid #e2e8f0;border-radius:14px;
+ padding:11px 6px;text-align:center;cursor:pointer;font-size:.83rem;font-weight:700;color:#334155;
+ transition:transform .16s,box-shadow .16s,border-color .16s,background .16s;display:flex;flex-direction:column;
+ align-items:center;gap:5px;min-height:72px;justify-content:center;box-shadow:0 3px 8px rgba(15,23,42,.04)
+}
+.grid-btn:hover{transform:translateY(-2px);box-shadow:0 7px 15px rgba(15,23,42,.09);border-color:#93c5fd}
+.grid-btn:active{transform:scale(.96)}
+.icon-lg{
+ font-size:1.48rem;width:39px;height:39px;display:flex;align-items:center;justify-content:center;
+ border-radius:12px;background:linear-gradient(135deg,#eff6ff,#dbeafe);box-shadow:0 3px 8px rgba(37,99,235,.08)
+}
+
+/* Category-specific colors */
+.card-emerald .grid-btn:nth-child(1) .icon-lg,.card-emerald .grid-btn:nth-child(2) .icon-lg{background:#dcfce7}
+.card-emerald .grid-btn:nth-child(3) .icon-lg,.card-emerald .grid-btn:nth-child(4) .icon-lg{background:#d1fae5}
+.card-amber .grid-btn .icon-lg{background:#fef3c7}
+.card-purple .grid-btn .icon-lg{background:#ede9fe}
+.card-rose .grid-btn .icon-lg{background:#ffe4e6}
+
+/* Important buttons */
+.btn-full{
+ grid-column:span 2;background:linear-gradient(135deg,#ecfdf5,#d1fae5);border-color:#86efac;color:#065f46;
+ font-size:.94rem;font-weight:800;padding:13px;min-height:82px
+}
+.btn-full .icon-lg{background:#a7f3d0}
+
+/* Make emergency buttons colorful */
+.card:not(.card-emerald):not(.card-amber):not(.card-purple):not(.card-rose) .grid-btn:nth-child(1) .icon-lg{background:#dbeafe}
+.card:not(.card-emerald):not(.card-amber):not(.card-purple):not(.card-rose) .grid-btn:nth-child(2) .icon-lg{background:#ffedd5}
+.card:not(.card-emerald):not(.card-amber):not(.card-purple):not(.card-rose) .grid-btn:nth-child(3) .icon-lg{background:#dcfce7}
+.card:not(.card-emerald):not(.card-amber):not(.card-purple):not(.card-rose) .grid-btn:nth-child(4) .icon-lg{background:#fee2e2}
+.card:not(.card-emerald):not(.card-amber):not(.card-purple):not(.card-rose) .grid-btn:nth-child(5) .icon-lg{background:#fce7f3}
+.card:not(.card-emerald):not(.card-amber):not(.card-purple):not(.card-rose) .grid-btn:nth-child(6) .icon-lg{background:#fef3c7}
+.card:not(.card-emerald):not(.card-amber):not(.card-purple):not(.card-rose) .grid-btn:nth-child(7) .icon-lg{background:#fee2e2}
+.card:not(.card-emerald):not(.card-amber):not(.card-purple):not(.card-rose) .grid-btn:nth-child(8) .icon-lg{background:#e0e7ff}
+
+/* Admin */
+.admin-link{text-align:center;margin-top:22px;padding-bottom:8px}
+.admin-link button{
+ background:#fff;border:1px solid #cbd5e1;color:#64748b;font-size:.82rem;text-decoration:none;cursor:pointer;
+ padding:8px 14px;border-radius:20px;box-shadow:0 3px 10px rgba(15,23,42,.05)
+}
+
+/* Modal */
+.modal{
+ display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(15,23,42,.68);
+ backdrop-filter:blur(5px);z-index:1000;justify-content:center;align-items:flex-end
+}
+.modal-content{
+ background:#fff;width:100%;max-width:540px;border-top-left-radius:25px;border-top-right-radius:25px;
+ max-height:88vh;overflow-y:auto;padding:18px 16px 25px;box-shadow:0 -12px 35px rgba(0,0,0,.22);animation:slideUp .25s ease-out
+}
+@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.modal-header{
+ display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #e2e8f0;
+ padding-bottom:11px;margin-bottom:15px;position:sticky;top:-18px;background:#fff;z-index:3;padding-top:4px
+}
+.modal-header h3{font-size:1.16rem;color:#0f172a;font-weight:800}
+.close-btn{
+ background:#f1f5f9;border:0;font-size:1rem;width:34px;height:34px;border-radius:50%;cursor:pointer;
+ color:#64748b;display:flex;align-items:center;justify-content:center
+}
+.list-item{
+ border:1px solid #e2e8f0;background:linear-gradient(135deg,#f8fafc,#fff);border-radius:14px;padding:12px 13px;
+ margin-bottom:9px;display:flex;justify-content:space-between;align-items:center;gap:10px
+}
+.list-item h5{font-size:.97rem;color:#0f172a;font-weight:800}
+.list-item p{font-size:.82rem;color:#475569;margin-top:2px}.list-item .badge{display:inline-block;background:#fee2e2;color:#dc2626;padding:2px 8px;border-radius:6px;font-size:.73rem;font-weight:800;margin-bottom:4px}
+.list-item .phone{font-size:.88rem;color:#2563eb;font-weight:800;display:block;margin-top:3px}
+.call-btn{
+ background:linear-gradient(135deg,#10b981,#059669);color:#fff;text-decoration:none;padding:8px 13px;border-radius:10px;
+ font-size:.82rem;font-weight:800;box-shadow:0 3px 8px rgba(16,185,129,.22);display:inline-block;text-align:center;white-space:nowrap
+}
+.form-group{margin-bottom:11px}.form-group label{display:block;font-size:.8rem;margin-bottom:4px;font-weight:700;color:#475569}
+.form-group input,.form-group select,.form-group textarea{
+ width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:10px;font-size:.88rem;outline:none;background:#f8fafc
+}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:#60a5fa;box-shadow:0 0 0 3px rgba(59,130,246,.1)}
+.btn-submit{
+ width:100%;background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;padding:12px;border:0;border-radius:11px;
+ font-size:.94rem;font-weight:800;cursor:pointer;margin-top:5px;box-shadow:0 5px 13px rgba(37,99,235,.22)
+}
+.quran-ayah{
+ background:linear-gradient(135deg,#fffbeb,#fff7d6);padding:11px;border-radius:10px;margin-bottom:8px;
+ border-right:4px solid #d97706;direction:rtl;font-size:1.08rem;line-height:1.9
+}
+.iframe-container{width:100%;height:400px;border:0;border-radius:12px;overflow:hidden;background:#f8fafc}
+.backup-live-link{
+ display:block;background:#e11d48;color:#fff;text-align:center;padding:11px;border-radius:10px;text-decoration:none;
+ font-weight:800;margin-top:9px
+}
+.admin-item{
+ background:#f1f5f9;border-radius:9px;padding:9px;margin-top:7px;display:flex;justify-content:space-between;
+ align-items:center;font-size:.82rem;gap:7px
+}
+.admin-actions{display:flex;gap:4px}.btn-delete{background:#ef4444;color:#fff;border:0;padding:4px 8px;border-radius:6px;cursor:pointer}.btn-edit{background:#0284c7;color:#fff;border:0;padding:4px 8px;border-radius:6px;cursor:pointer}
+
+/* Small screen refinement */
+@media(max-width:370px){
+ header h1{font-size:.95rem}.btn-refresh{padding:6px 9px;font-size:.75rem}
+ .banner h2{font-size:1.55rem}.grid-btn{font-size:.76rem}.grid-3{gap:5px}.icon-lg{width:35px;height:35px;font-size:1.3rem}
+}
+
+/* ===== FULL COLOR CATEGORY UI UPGRADE ===== */
+.card{
+    border-left:0 !important;
+    padding:15px;
+    background:rgba(255,255,255,.97);
+}
+.card-title{
+    margin:-15px -15px 13px;
+    padding:12px 14px;
+    color:#fff !important;
+    border-radius:18px 18px 10px 10px;
+    text-shadow:0 1px 3px rgba(0,0,0,.22);
+}
+.card-title small{color:rgba(255,255,255,.82)!important}
+
+/* প্রতিটি পুরো Section-এর আলাদা রঙ */
+.card-emerald .card-title{
+    background:linear-gradient(135deg,#047857,#10b981,#34d399);
+}
+.card-amber .card-title{
+    background:linear-gradient(135deg,#b45309,#f59e0b,#fbbf24);
+}
+.card-purple .card-title{
+    background:linear-gradient(135deg,#5b21b6,#7c3aed,#a855f7);
+}
+.card-rose .card-title{
+    background:linear-gradient(135deg,#be123c,#e11d48,#fb7185);
+}
+
+/* সাধারণ/জরুরি Section */
+.card:not(.card-emerald):not(.card-amber):not(.card-purple):not(.card-rose) .card-title{
+    background:linear-gradient(135deg,#1d4ed8,#2563eb,#38bdf8);
+}
+
+/* Weather পুরো রঙিন */
+.card-purple:first-child .card-title{
+    background:linear-gradient(135deg,#0e7490,#0284c7,#38bdf8);
+}
+.card-purple:first-child .weather-box{
+    background:linear-gradient(135deg,#075985,#0284c7,#06b6d4);
+}
+
+/* প্রতিটি category button-কে আলাদা gradient */
+.grid-btn{
+    border:0 !important;
+    color:#fff !important;
+    min-height:78px;
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 5px 12px rgba(15,23,42,.12);
+    text-shadow:0 1px 2px rgba(0,0,0,.2);
+}
+.grid-btn::after{
+    content:"";
+    position:absolute;
+    width:75px;height:75px;
+    border-radius:50%;
+    right:-35px;bottom:-40px;
+    background:rgba(255,255,255,.12);
+}
+.grid-btn .icon-lg{
+    background:rgba(255,255,255,.20) !important;
+    color:#fff;
+    border:1px solid rgba(255,255,255,.28);
+    box-shadow:0 3px 8px rgba(0,0,0,.12);
+}
+
+/* Emergency: 8টি আলাদা রঙ */
+.card:not(.card-emerald):not(.card-amber):not(.card-purple):not(.card-rose) .grid-btn:nth-child(1){
+    background:linear-gradient(135deg,#1d4ed8,#3b82f6);
+}
+.card:not(.card-emerald):not(.card-amber):not(.card-purple):not(.card-rose) .grid-btn:nth-child(2){
+    background:linear-gradient(135deg,#c2410c,#f97316);
+}
+.card:not(.card-emerald):not(.card-amber):not(.card-purple):not(.card-rose) .grid-btn:nth-child(3){
+    background:linear-gradient(135deg,#047857,#10b981);
+}
+.card:not(.card-emerald):not(.card-amber):not(.card-purple):not(.card-rose) .grid-btn:nth-child(4){
+    background:linear-gradient(135deg,#be123c,#f43f5e);
+}
+.card:not(.card-emerald):not(.card-amber):not(.card-purple):not(.card-rose) .grid-btn:nth-child(5){
+    background:linear-gradient(135deg,#7e22ce,#a855f7);
+}
+.card:not(.card-emerald):not(.card-amber):not(.card-purple):not(.card-rose) .grid-btn:nth-child(6){
+    background:linear-gradient(135deg,#b45309,#f59e0b);
+}
+.card:not(.card-emerald):not(.card-amber):not(.card-purple):not(.card-rose) .grid-btn:nth-child(7){
+    background:linear-gradient(135deg,#be123c,#ec4899);
+}
+.card:not(.card-emerald):not(.card-amber):not(.card-purple):not(.card-rose) .grid-btn:nth-child(8){
+    background:linear-gradient(135deg,#4338ca,#6366f1);
+}
+
+/* Green section buttons */
+.card-emerald .grid-btn:nth-child(1){background:linear-gradient(135deg,#047857,#10b981)}
+.card-emerald .grid-btn:nth-child(2){background:linear-gradient(135deg,#059669,#34d399)}
+.card-emerald .grid-btn:nth-child(3){background:linear-gradient(135deg,#0f766e,#14b8a6)}
+.card-emerald .grid-btn:nth-child(4){background:linear-gradient(135deg,#15803d,#22c55e)}
+.card-emerald .grid-btn:nth-child(5){background:linear-gradient(135deg,#166534,#16a34a)}
+.card-emerald .grid-btn:nth-child(6){background:linear-gradient(135deg,#0e7490,#06b6d4)}
+
+/* Amber section buttons */
+.card-amber .grid-btn:nth-child(1){background:linear-gradient(135deg,#b91c1c,#ef4444)}
+.card-amber .grid-btn:nth-child(2){background:linear-gradient(135deg,#b45309,#f59e0b)}
+.card-amber .grid-btn:nth-child(3){background:linear-gradient(135deg,#a16207,#eab308)}
+.card-amber .grid-btn:nth-child(4){background:linear-gradient(135deg,#c2410c,#f97316)}
+
+/* Purple section buttons */
+.card-purple .grid-btn:nth-child(1){background:linear-gradient(135deg,#6d28d9,#8b5cf6)}
+.card-purple .grid-btn:nth-child(2){background:linear-gradient(135deg,#4338ca,#6366f1)}
+.card-purple .grid-btn:nth-child(3){background:linear-gradient(135deg,#7e22ce,#a855f7)}
+.card-purple .grid-btn:nth-child(4){background:linear-gradient(135deg,#be185d,#ec4899)}
+
+/* Rose section buttons */
+.card-rose .grid-btn:nth-child(1){background:linear-gradient(135deg,#be123c,#f43f5e)}
+.card-rose .grid-btn:nth-child(2){background:linear-gradient(135deg,#c026d3,#e879f9)}
+.card-rose .grid-btn:nth-child(3){background:linear-gradient(135deg,#0369a1,#0ea5e9)}
+.card-rose .grid-btn:nth-child(4){background:linear-gradient(135deg,#15803d,#22c55e)}
+
+/* গণ্যমান্য ব্যক্তিবর্গের বিশেষ premium card */
+.card-emerald .btn-full{
+    background:linear-gradient(135deg,#065f46,#059669,#34d399) !important;
+    color:#fff !important;
+    min-height:88px;
+    font-size:1rem;
+}
+.card-emerald .btn-full .icon-lg{
+    width:44px;height:44px;font-size:1.6rem;
+}
+
+/* প্রতিষ্ঠান Section-এর বাটনগুলোও আলাদা রঙ */
+.card:not(.card-emerald):not(.card-amber):not(.card-purple):not(.card-rose) .grid-btn:nth-child(9){
+    background:linear-gradient(135deg,#0369a1,#0ea5e9);
+}
+
+/* Button press */
+.grid-btn:active{
+    transform:scale(.95) !important;
+    filter:brightness(.92);
+}
+
+/* modal-ও colorful */
+.modal-header h3{
+    background:linear-gradient(135deg,#1d4ed8,#7c3aed);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+}
+
+
+.card-weather{border-left:0 !important}
+.card-weather .card-title{background:linear-gradient(135deg,#075985,#0284c7,#06b6d4)}
+.card-weather .weather-box{background:linear-gradient(135deg,#0369a1,#0284c7,#22d3ee)}
+
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<h1>📱 আমাদের কামারের চর</h1>
+<button class="btn-refresh" onclick="forceRefresh()">↻ রিফ্রেশ</button>
+</header>
+
+<div class="banner">
+<h2>আমাদের কামারের চর</h2>
+<p>সব তথ্য • সব সেবা • এক সাথে</p>
+<div class="live-datetime" id="liveClock">📅 তারিখ ও সময় লোড হচ্ছে...</div>
+</div>
+
+<div class="notice-ticker" onclick="openCategory('আজকের নোটিশ')">
+<span>📢 নোটিশ</span>
+<marquee id="tickerText">আজকের জরুরি নোটিশ ও আপডেট দেখতে এখানে ক্লিক করুন...</marquee>
+</div>
+
+<div class="content">
+
+<div class="card card-weather">
+<div class="card-title">🌤️ শেরপুর আবহাওয়া আপডেট</div>
+<div class="weather-box" id="weatherWidget">
+<div><h4 id="weatherStatus">আবহাওয়া লোড হচ্ছে...</h4><p style="font-size:.78rem;opacity:.9">শেরপুর জেলা, বাংলাদেশ</p></div>
+<div class="weather-temp" id="weatherTemp">--°C</div>
+</div>
+</div>
+
+<div class="card card-emerald">
+<div class="card-title">👤 গণ্যমান্য ডিরেক্টরি</div>
+<div class="grid-2">
+<button class="grid-btn btn-full" onclick="openCategory('গণ্যমান্য ব্যক্তি')"><span class="icon-lg">👥</span>গণ্যমান্য ব্যক্তিবর্গ</button>
+</div>
+</div>
+
+<div class="card">
+<div class="card-title">🚑 জরুরি সেবা <small style="font-size:.7rem;color:#64748b">(শেরপুর জেলা)</small></div>
+<div class="grid-2">
+<button class="grid-btn" onclick="openCategory('পুলিশ')"><span class="icon-lg">🛡️</span>পুলিশ (শেরপুর)</button>
+<button class="grid-btn" onclick="openCategory('ফায়ার সার্ভিস')"><span class="icon-lg">🧯</span>ফায়ার সার্ভিস</button>
+<button class="grid-btn" onclick="openCategory('অ্যাম্বুলেন্স')"><span class="icon-lg">🚐</span>অ্যাম্বুলেন্স</button>
+<button class="grid-btn" onclick="openCategory('হাসপাতাল ও ক্লিনিক')"><span class="icon-lg">🏥</span>হাসপাতাল ও ডায়াগনস্টিক</button>
+<button class="grid-btn" onclick="openCategory('ডাক্তার')"><span class="icon-lg">👨‍⚕️</span>বিশেষজ্ঞ ডাক্তার</button>
+<button class="grid-btn" onclick="openCategory('পল্লী বিদ্যুৎ')"><span class="icon-lg">⚡</span>পল্লী বিদ্যুৎ</button>
+<button class="grid-btn" onclick="openCategory('রক্তদাতা')"><span class="icon-lg">🩸</span>রক্তদাতা তালিকা</button>
+<button class="grid-btn" onclick="openCategory('জরুরি হটলাইন')"><span class="icon-lg">📞</span>জরুরি হটলাইন</button>
+</div>
+</div>
+
+<div class="card card-amber">
+<div class="card-title">📜 নোটিশ ও আপডেট</div>
+<div class="grid-3">
+<button class="grid-btn" onclick="openCategory('আজকের নোটিশ')"><span class="icon-lg">📢</span>আজকের নোটিশ</button>
+<button class="grid-btn" onclick="openCategory('ইউনিয়ন নোটিশ')"><span class="icon-lg">🏛️</span>ইউনিয়ন নোটিশ</button>
+<button class="grid-btn" onclick="openCategory('সরকারি ঘোষণা')"><span class="icon-lg">📜</span>সরকারি ঘোষণা</button>
+<button class="grid-btn" onclick="openCategory('শিক্ষা নোটিশ')"><span class="icon-lg">🎓</span>শিক্ষা নোটিশ</button>
+</div>
+</div>
+
+<div class="card card-emerald">
+<div class="card-title">🕌 ধর্মীয় তথ্য ও তাহফিজুল কোরআন</div>
+<div class="grid-3">
+<button class="grid-btn" onclick="loadTahfizQuran()"><span class="icon-lg">📖</span>তাহফিজুল কোরআন</button>
+<button class="grid-btn" onclick="loadSherpurPrayers()"><span class="icon-lg">⏰</span>নামাজের সময় (আজ)</button>
+<button class="grid-btn" onclick="openCategory('মসজিদ')"><span class="icon-lg">🕌</span>মসজিদ</button>
+<button class="grid-btn" onclick="openCategory('মাদ্রাসা')"><span class="icon-lg">🏫</span>মাদ্রাসা</button>
+<button class="grid-btn" onclick="openCategory('মাহফিল')"><span class="icon-lg">🎙️</span>মাহফিল</button>
+<button class="grid-btn" onclick="openCategory('সাহরি ও ইফতার')"><span class="icon-lg">📅</span>সাহরি ও ইফতার</button>
+</div>
+</div>
+
+<div class="card card-purple">
+<div class="card-title">🤝 সামাজিক সেবা</div>
+<div class="grid-2">
+<button class="grid-btn" onclick="openCategory('স্বেচ্ছাসেবক')"><span class="icon-lg">🙋‍♂️</span>স্বেচ্ছাসেবক</button>
+<button class="grid-btn" onclick="openCategory('সাহায্য সহযোগিতা')"><span class="icon-lg">🤲</span>সাহায্য সহযোগিতা</button>
+<button class="grid-btn" onclick="openCategory('ত্রাণ কর্মসূচি')"><span class="icon-lg">📦</span>ত্রাণ কর্মসূচি</button>
+<button class="grid-btn" onclick="openCategory('সামাজিক সংগঠন')"><span class="icon-lg">🏢</span>সামাজিক সংগঠন</button>
+</div>
+</div>
+
+<div class="card">
+<div class="card-title">🏫 প্রতিষ্ঠান সমূহ</div>
+<div class="grid-2">
+<button class="grid-btn" onclick="openCategory('প্রাথমিক বিদ্যালয়')"><span class="icon-lg">🏫</span>প্রাথমিক বিদ্যালয়</button>
+<button class="grid-btn" onclick="openCategory('উচ্চ বিদ্যালয়')"><span class="icon-lg">🏫</span>উচ্চ বিদ্যালয়</button>
+<button class="grid-btn" onclick="openCategory('কলেজ')"><span class="icon-lg">🏛️</span>কলেজ</button>
+<button class="grid-btn" onclick="openCategory('মাদ্রাসা')"><span class="icon-lg">📖</span>মাদ্রাসা</button>
+</div>
+</div>
+
+<div class="card card-rose">
+<div class="card-title">⚽ খেলাধুলা ও লাইভ ক্রিকেট স্কোর</div>
+<div class="grid-2">
+<button class="grid-btn" onclick="loadLiveCricketScore()"><span class="icon-lg">🔴</span>সব ম্যাচের লাইভ স্কোর</button>
+<button class="grid-btn" onclick="openCategory('টুর্নামেন্ট')"><span class="icon-lg">🏆</span>টুর্নামেন্ট</button>
+<button class="grid-btn" onclick="openCategory('জাতীয় দিবস')"><span class="icon-lg">🇧🇩</span>জাতীয় দিবস</button>
+<button class="grid-btn" onclick="openCategory('স্থানীয় অনুষ্ঠান')"><span class="icon-lg">🎉</span>স্থানীয় অনুষ্ঠান</button>
+</div>
+</div>
+
+<div class="card card-amber">
+<div class="card-title">📝 অভিযোগ ও মতামত</div>
+<div class="grid-2">
+<button class="grid-btn" onclick="openFeedbackModal('অভিযোগ')"><span class="icon-lg">📩</span>অভিযোগ করুন</button>
+<button class="grid-btn" onclick="openFeedbackModal('মতামত')"><span class="icon-lg">💡</span>আপনার মতামত</button>
+</div>
+</div>
+
+<div class="admin-link"><button onclick="promptAdminLogin()">🔒 এডমিন প্যানেল প্রবেশ</button></div>
+</div>
+</div>
+
+<div id="dataModal" class="modal"><div class="modal-content">
+<div class="modal-header"><h3 id="modalTitle">তালিকা</h3><button class="close-btn" onclick="closeModal('dataModal')">✕</button></div>
+<div id="modalBody"></div>
+</div></div>
+
+<div id="feedbackModal" class="modal"><div class="modal-content">
+<div class="modal-header"><h3 id="feedbackTitle">অভিযোগ / মতামত</h3><button class="close-btn" onclick="closeModal('feedbackModal')">✕</button></div>
+<form onsubmit="submitFeedback(event)">
+<input type="hidden" id="feedbackType" value="অভিযোগ">
+<div class="form-group"><label>আপনার নাম</label><input type="text" id="fbName" required placeholder="আপনার নাম লিখুন"></div>
+<div class="form-group"><label>ফোন নম্বর</label><input type="tel" id="fbPhone" required placeholder="01700000000"></div>
+<div class="form-group"><label>বিস্তারিত লিখুন</label><textarea id="fbMessage" rows="4" required placeholder="আপনার বার্তাটি এখানে লিখুন..."></textarea></div>
+<button type="submit" class="btn-submit">জমা দিন</button>
+</form>
+</div></div>
+
+<div id="adminModal" class="modal"><div class="modal-content">
+<div class="modal-header"><h3>🛠️ এডমিন প্যানেল</h3><button class="close-btn" onclick="closeModal('adminModal')">✕</button></div>
+<form id="contactForm" onsubmit="saveContact(event)">
+<input type="hidden" id="editIndex" value="-1">
+<div class="form-group"><label>ক্যাটাগরি নির্বাচন করুন</label><select id="inputCategory" onchange="toggleExtraFields()">
+<option value="আজকের নোটিশ">আজকের স্ক্রোলিং নোটিশ</option><option value="গণ্যমান্য ব্যক্তি">গণ্যমান্য ব্যক্তি</option>
+<option value="পুলিশ">পুলিশ (শেরপুর)</option><option value="ফায়ার সার্ভিস">ফায়ার সার্ভিস</option><option value="অ্যাম্বুলেন্স">অ্যাম্বুলেন্স</option>
+<option value="হাসপাতাল ও ক্লিনিক">হাসপাতাল/ল্যাব/ক্লিনিক</option><option value="ডাক্তার">ডাক্তার</option><option value="পল্লী বিদ্যুৎ">পল্লী বিদ্যুৎ</option>
+<option value="রক্তদাতা">রক্তদাতা</option><option value="জরুরি হটলাইন">জরুরি হটলাইন</option><option value="ইউনিয়ন নোটিশ">ইউনিয়ন নোটিশ</option>
+<option value="সরকারি ঘোষণা">সরকারি ঘোষণা</option><option value="শিক্ষা নোটিশ">শিক্ষা নোটিশ</option><option value="স্বেচ্ছাসেবক">স্বেচ্ছাসেবক</option>
+<option value="সাহায্য সহযোগিতা">সাহায্য সহযোগিতা</option><option value="ত্রাণ কর্মসূচি">ত্রাণ কর্মসূচি</option><option value="সামাজিক সংগঠন">সামাজিক সংগঠন</option>
+<option value="মসজিদ">মসজিদ</option><option value="মাদ্রাসা">মাদ্রাসা</option><option value="মাহফিল">মাহফিল</option><option value="সাহরি ও ইফতার">সাহরি ও ইফতার (রমজান)</option>
+<option value="প্রাথমিক বিদ্যালয়">প্রাথমিক বিদ্যালয়</option><option value="উচ্চ বিদ্যালয়">উচ্চ বিদ্যালয়</option><option value="কলেজ">কলেজ</option>
+<option value="টুর্নামেন্ট">টুর্নামেন্ট</option><option value="জাতীয় দিবস">জাতীয় দিবস</option><option value="স্থানীয় অনুষ্ঠান">স্থানীয় অনুষ্ঠান</option>
+</select></div>
+<div class="form-group"><label id="lblName">নাম / বিষয় / শিরোনাম</label><input type="text" id="inputName" required placeholder="এখানে লিখুন"></div>
+<div class="form-group" id="groupBlood" style="display:none"><label>রক্তের গ্রুপ</label><select id="inputBlood">
+<option value="A+">A+</option><option value="A-">A-</option><option value="B+">B+</option><option value="B-">B-</option>
+<option value="O+">O+</option><option value="O-">O-</option><option value="AB+">AB+</option><option value="AB-">AB-</option>
+</select></div>
+<div class="form-group"><label id="lblPhone">ফোন নম্বর / বিস্তারিত নোটিশ</label><input type="text" id="inputPhone" required placeholder="ফোন নম্বর বা নোটিশের তথ্য লিখুন"></div>
+<div class="form-group"><label id="lblRole">পদবী / অতিরিক্ত বিবরণ (ঐচ্ছিক)</label><input type="text" id="inputRole" placeholder="অতিরিক্ত বিবরণ লিখুন"></div>
+<button type="submit" class="btn-submit">সংরক্ষণ করুন</button>
+</form>
+<h4 style="margin-top:20px;font-size:.95rem;color:#0f172a">📩 জমা পড়া অভিযোগ ও মতামত:</h4><div id="adminFeedbackList"></div>
+<h4 style="margin-top:20px;font-size:.95rem;color:#0f172a">📌 তথ্য ডিরেক্টরি:</h4><div id="adminDataList"></div>
+</div></div>
+
+<script>
+function forceRefresh(){window.location.href=window.location.pathname+'?v='+new Date().getTime()}
+function updateClock(){const now=new Date();const options={weekday:'long',year:'numeric',month:'long',day:'numeric',hour:'2-digit',minute:'2-digit',second:'2-digit'};document.getElementById('liveClock').innerText=now.toLocaleDateString('bn-BD',options)}
+setInterval(updateClock,1000);updateClock();
+
+async function fetchSherpurWeather(){try{const res=await fetch('https://api.open-meteo.com/v1/forecast?latitude=25.0204&longitude=90.0153&current_weather=true');const data=await res.json();const temp=Math.round(data.current_weather.temperature);document.getElementById('weatherTemp').innerText=temp+'°C';document.getElementById('weatherStatus').innerText='বর্তমান তাপমাত্রা'}catch(e){document.getElementById('weatherStatus').innerText='আবহাওয়া প্রস্তুত';document.getElementById('weatherTemp').innerText='৩০°C'}}fetchSherpurWeather();
+
+async function loadSherpurPrayers(){document.getElementById('modalTitle').innerText="আজকের নামাজের সময় (শেরপুর)";const body=document.getElementById('modalBody');body.innerHTML="<p style='text-align:center'>সময়সূচি লোড হচ্ছে...</p>";document.getElementById('dataModal').style.display='flex';try{const res=await fetch('https://api.aladhan.com/v1/timingsByCity?city=Sherpur&country=Bangladesh&method=1');const data=await res.json();const t=data.data.timings;body.innerHTML=`<div class="list-item"><div><h5>ফজর</h5></div><span class="phone">${t.Fajr} AM</span></div><div class="list-item"><div><h5>জোহর</h5></div><span class="phone">${t.Dhuhr} PM</span></div><div class="list-item"><div><h5>আসর</h5></div><span class="phone">${t.Asr} PM</span></div><div class="list-item"><div><h5>মাগরিব</h5></div><span class="phone">${t.Maghrib} PM</span></div><div class="list-item"><div><h5>এশা</h5></div><span class="phone">${t.Isha} PM</span></div>`}catch(e){body.innerHTML=`<p style="text-align:center">বর্তমানে সময়সূচি লোড করা সম্ভব হয়নি।</p>`}}
+
+function loadLiveCricketScore(){document.getElementById('modalTitle').innerText="🔴 লাইভ ক্রিকেট স্কোর ও আপডেট";const body=document.getElementById('modalBody');document.getElementById('dataModal').style.display='flex';body.innerHTML=`<p style="text-align:center;font-size:.85rem;color:#475569;margin-bottom:10px">বাংলাদেশ সহ বিশ্বমানের সকল ম্যাচের লাইভ স্কোর দেখতে নিচের লিংকে ট্যাপ করুন বা সরাসরি ব্রাউজারে দেখুন:</p><iframe src="https://m.cricbuzz.com/cricket-match/live-scores" class="iframe-container" title="Live Cricket Score"></iframe><a href="https://www.google.com/search?q=cricket+live+score" target="_blank" class="backup-live-link">🌐 গুগল থেকে সরাসরি লাইভ স্কোর দেখুন</a><a href="https://www.espncricinfo.com/live-cricket-score" target="_blank" class="backup-live-link" style="background:#0284c7">🏏 ESPNcricinfo লাইভ ক্রিকেট স্কোর</a>`}
+
+async function loadTahfizQuran(){document.getElementById('modalTitle').innerText="তাহফিজুল কোরআন (সূরা সমূহ)";const body=document.getElementById('modalBody');body.innerHTML="<p style='text-align:center'>কোরআন ফাইলের তালিকা লোড হচ্ছে...</p>";document.getElementById('dataModal').style.display='flex';try{const res=await fetch('https://api.alquran.cloud/v1/surah');const data=await res.json();body.innerHTML=data.data.slice(0,20).map(s=>`<div class="list-item" onclick="readSurah(${s.number}, '${s.englishName}')" style="cursor:pointer"><div><h5>${s.number}. ${s.name} (${s.englishName})</h5><p>আয়াত সংখ্যা: ${s.numberOfAyahs}</p></div><button class="call-btn" style="background:#059669">পড়ুন</button></div>`).join('')}catch(e){body.innerHTML=`<p style="text-align:center;color:#ef4444">কোরআন লোড করতে সমস্যা হয়েছে।</p>`}}
+
+async function readSurah(surahNum,surahName){document.getElementById('modalTitle').innerText="সূরা "+surahName;const body=document.getElementById('modalBody');body.innerHTML="<p style='text-align:center'>আয়াত সমূহ লোড হচ্ছে...</p>";try{const res=await fetch(`https://api.alquran.cloud/v1/surah/${surahNum}`);const data=await res.json();body.innerHTML=data.data.ayahs.map(a=>`<div class="quran-ayah">${a.text} <b style="color:#059669;font-size:.9rem">(${a.numberInSurah})</b></div>`).join('')}catch(e){body.innerHTML=`<p style="text-align:center">সূরা পড়তে সমস্যা হচ্ছে।</p>`}}
+
+const defaultContacts=[{"name":"কামারের চর ইউনিয়ন পরিষদ","phone":"01721000100","role":"চেয়ারম্যানের যোগাযোগ নম্বর; ইউনিয়ন ওয়েবসাইটে তালিকাভুক্ত","category":"গণ্যমান্য ব্যক্তি"},{"name":"মোঃ হাবিবুর রহমান","phone":"","role":"চেয়ারম্যান, ১নং কামারের চর ইউনিয়ন পরিষদ; ইউনিয়ন ওয়েবসাইটে তালিকাভুক্ত","category":"গণ্যমান্য ব্যক্তি"},{"name":"মোঃ আবুল হাশেম","phone":"","role":"উপ-সচিব; কামারের চর ইউনিয়নের প্রখ্যাত ব্যক্তির তালিকায়","category":"গণ্যমান্য ব্যক্তি"},{"name":"মোঃ হেলাল উদ্দিন","phone":"","role":"কাস্টমস অফিসার; কামারের চর ইউনিয়নের প্রখ্যাত ব্যক্তির তালিকায়","category":"গণ্যমান্য ব্যক্তি"},{"name":"জাতীয় জরুরি সেবা","phone":"999","role":"পুলিশ, ফায়ার সার্ভিস ও অ্যাম্বুলেন্সসহ জরুরি সহায়তা","category":"পুলিশ"},{"name":"পুলিশ সুপার, শেরপুর","phone":"01320106100","role":"বাংলাদেশ পুলিশের বর্তমান জেলা পুলিশ সুপার যোগাযোগ নম্বর","category":"পুলিশ"},{"name":"ফায়ার সার্ভিস হটলাইন","phone":"102","role":"জরুরি ফায়ার সার্ভিস সেবা","category":"ফায়ার সার্ভিস"},{"name":"ফায়ার সার্ভিস ও সিভিল ডিফেন্স","phone":"16103","role":"ফায়ার সার্ভিস তথ্য/হেল্পলাইন","category":"ফায়ার সার্ভিস"},{"name":"স্বাস্থ্য বাতায়ন","phone":"16263","role":"সরকারি স্বাস্থ্য হেল্পলাইন; অ্যাম্বুলেন্স তথ্যসহ স্বাস্থ্যসেবা সহায়তা","category":"অ্যাম্বুলেন্স"},{"name":"জাতীয় জরুরি সেবা","phone":"999","role":"জরুরি প্রয়োজনে অ্যাম্বুলেন্স সহায়তার জন্য","category":"অ্যাম্বুলেন্স"},{"name":"শেরপুর ২৫০ বেড জেলা সদর হাসপাতাল","phone":"01978449070","role":"শেরপুর সদর; সরকারি জেলা/সাধারণ হাসপাতাল","category":"হাসপাতাল ও ক্লিনিক"},{"name":"শেরপুর ২৫০ বেড জেলা সদর হাসপাতাল","phone":"01701248220","role":"অফিসিয়াল যোগাযোগ নম্বর","category":"হাসপাতাল ও ক্লিনিক"},{"name":"আকোটা স্পেশালাইজড হাসপাতাল","phone":"01821247275","role":"বেসরকারি হাসপাতাল/ক্লিনিক, শেরপুর সদর","category":"হাসপাতাল ও ক্লিনিক"},{"name":"আল মদিনা জেনারেল হাসপাতাল","phone":"01718883536","role":"বেসরকারি হাসপাতাল, নারায়ণপুর, শেরপুর সদর","category":"হাসপাতাল ও ক্লিনিক"},{"name":"স্বাস্থ্য বাতায়ন – ডাক্তার পরামর্শ","phone":"16263","role":"২৪ ঘণ্টা সরকারি স্বাস্থ্য হেল্পলাইন; সরাসরি ডাক্তারি পরামর্শ ও স্বাস্থ্য তথ্য","category":"ডাক্তার"},{"name":"বাংলাদেশ পল্লী বিদ্যুতায়ন বোর্ড কল সেন্টার","phone":"16899","role":"পল্লী বিদ্যুৎ সংক্রান্ত অভিযোগ ও সেবা","category":"পল্লী বিদ্যুৎ"},{"name":"রক্তদাতা তালিকা","phone":"","role":"রক্তের গ্রুপ, নাম ও যাচাইকৃত যোগাযোগ নম্বর প্রশাসক কর্তৃক যুক্ত হবে","category":"রক্তদাতা"},{"name":"জাতীয় জরুরি সেবা","phone":"999","role":"জরুরি পুলিশ/ফায়ার সার্ভিস/অ্যাম্বুলেন্স সহায়তা","category":"জরুরি হটলাইন"},{"name":"ফায়ার সার্ভিস","phone":"102","role":"ফায়ার সার্ভিস হটলাইন","category":"জরুরি হটলাইন"},{"name":"শিশু সহায়তা","phone":"1098","role":"শিশু সহায়তা লাইন","category":"জরুরি হটলাইন"},{"name":"নারী ও শিশু নির্যাতন প্রতিরোধ","phone":"109","role":"নারী ও শিশু নির্যাতন প্রতিরোধ হেল্পলাইন","category":"জরুরি হটলাইন"},{"name":"সরকারি তথ্য ও সেবা","phone":"333","role":"জাতীয় তথ্য ও সেবা হেল্পলাইন; ২৪/৭","category":"জরুরি হটলাইন"},{"name":"সরকারি আইন সেবা","phone":"16430","role":"লিগ্যাল এইড হেল্পলাইন","category":"জরুরি হটলাইন"},{"name":"কামারের চর ইউনিয়ন পরিষদ","phone":"01721000100","role":"ইউনিয়ন পরিষদের যোগাযোগ; ডুবার চর বাজার, শেরপুর সদর","category":"ইউনিয়ন নোটিশ"},{"name":"ইউপি সচিব – মোঃ হযরত আলী","phone":"01915708078","role":"১নং কামারের চর ইউনিয়ন পরিষদ","category":"ইউনিয়ন নোটিশ"},{"name":"জাতীয় তথ্য ও সেবা হেল্পলাইন","phone":"333","role":"সরকারি সেবা, জেলা-উপজেলা তথ্য ও অভিযোগ সহায়তা","category":"সরকারি ঘোষণা"},{"name":"শিক্ষা সংক্রান্ত সরকারি তথ্য","phone":"333","role":"সরকারি শিক্ষা/সেবা সংক্রান্ত তথ্যের জন্য জাতীয় তথ্য ও সেবা হেল্পলাইন","category":"শিক্ষা নোটিশ"},{"name":"স্বেচ্ছাসেবক নিবন্ধন","phone":"","role":"স্থানীয় স্বেচ্ছাসেবক তালিকা প্রশাসক যাচাই করে যুক্ত করবেন","category":"স্বেচ্ছাসেবক"},{"name":"সরকারি তথ্য ও সেবা","phone":"333","role":"সামাজিক সমস্যা ও সরকারি সেবা বিষয়ে তথ্য/অভিযোগ","category":"সাহায্য সহযোগিতা"},{"name":"ত্রাণ সহায়তা তথ্য","phone":"333","role":"সরকারি ত্রাণ ও স্থানীয় সরকারি সেবা বিষয়ে তথ্য জানতে কল করুন","category":"ত্রাণ কর্মসূচি"},{"name":"স্থানীয় সামাজিক সংগঠন","phone":"","role":"যাচাইকৃত সংগঠনের নাম ও যোগাযোগ নম্বর প্রশাসক যুক্ত করবেন","category":"সামাজিক সংগঠন"},{"name":"ডুবারচর বাজার পাঞ্জেগানা মসজিদ","phone":"","role":"ডুবারচর উত্তর, শেরপুর সদর, শেরপুর","category":"মসজিদ"},{"name":"ডুবারচর উত্তর জামে মসজিদ","phone":"","role":"ডুবারচর উত্তর, শেরপুর সদর; ইউনিয়ন সরকারি তালিকায় রয়েছে","category":"মসজিদ"},{"name":"লতারিয়া উত্তরপাড়া জামে মসজিদ","phone":"","role":"লতারিয়া, শেরপুর সদর; ইউনিয়ন সরকারি তালিকায় রয়েছে","category":"মসজিদ"},{"name":"কামারপাড়া জামে মসজিদ","phone":"","role":"কামারপাড়া/সাহাব্দীরচর মধ্য দিগপাতি, শেরপুর সদর","category":"মসজিদ"},{"name":"সন্যাসিরচর ডাঃ বাড়ি পাঞ্জেগানা জামে মসজিদ","phone":"","role":"সন্যাসিরচর, শেরপুর সদর","category":"মসজিদ"},{"name":"কামারের চর কে এম আলিম মাদ্রাসা","phone":"","role":"কামারের চর, শেরপুর; শিক্ষাগত উৎসে প্রতিষ্ঠানের নাম পাওয়া যায়","category":"মাদ্রাসা"},{"name":"ডুবারচর ঈমামবাড়ী মাদ্রাসা","phone":"","role":"ডুবারচর; ইউনিয়নের উন্নয়ন পরিকল্পনায় প্রতিষ্ঠানটির উল্লেখ আছে","category":"মাদ্রাসা"},{"name":"স্থানীয় মাহফিল তথ্য","phone":"","role":"মাহফিল/ওয়াজের তারিখ, স্থান ও আয়োজকের যাচাইকৃত তথ্য প্রশাসক যুক্ত করবেন","category":"মাহফিল"},{"name":"সাহরি ও ইফতার সময়সূচি","phone":"","role":"রমজান মাসে শেরপুরের তারিখভিত্তিক সময়সূচি এখানে যুক্ত করা হবে","category":"সাহরি ও ইফতার"},{"name":"ডুবারচর সরকারি প্রাথমিক বিদ্যালয়","phone":"","role":"ডুবারচর, কামারের চর ইউনিয়ন; ইউনিয়ন সরকারি নথিতে উল্লেখিত","category":"প্রাথমিক বিদ্যালয়"},{"name":"সন্যাসিরচর সরকারি প্রাথমিক বিদ্যালয়","phone":"","role":"সন্যাসিরচর, কামারের চর ইউনিয়ন","category":"প্রাথমিক বিদ্যালয়"},{"name":"সন্যাসিরচর সরকারি বালিকা প্রাথমিক বিদ্যালয়","phone":"","role":"সন্যাসিরচর, কামারের চর ইউনিয়ন","category":"প্রাথমিক বিদ্যালয়"},{"name":"নিজকামারেরচর সরকারি প্রাথমিক বিদ্যালয়","phone":"","role":"নিজকামারেরচর, কামারের চর ইউনিয়ন","category":"প্রাথমিক বিদ্যালয়"},{"name":"লতারিয়া সরকারি প্রাথমিক বিদ্যালয়","phone":"","role":"লতারিয়া, কামারের চর ইউনিয়ন","category":"প্রাথমিক বিদ্যালয়"},{"name":"কামারের চর উচ্চ বিদ্যালয়","phone":"01913690381","role":"ডুবারচর, শেরপুর সদর","category":"উচ্চ বিদ্যালয়"},{"name":"কামারের চর পাবলিক উচ্চ বিদ্যালয়","phone":"01714748138","role":"কামারের চর, শেরপুর সদর","category":"উচ্চ বিদ্যালয়"},{"name":"কামারের চর কলেজ","phone":"","role":"EIIN 113917; শেরপুর; উচ্চমাধ্যমিক পর্যায়ের প্রতিষ্ঠান","category":"কলেজ"},{"name":"স্থানীয় টুর্নামেন্ট","phone":"","role":"ক্রিকেট/ফুটবলসহ স্থানীয় টুর্নামেন্টের যাচাইকৃত তথ্য প্রশাসক যুক্ত করবেন","category":"টুর্নামেন্ট"},{"name":"২১ ফেব্রুয়ারি – শহীদ দিবস ও আন্তর্জাতিক মাতৃভাষা দিবস","phone":"","role":"জাতীয় দিবস","category":"জাতীয় দিবস"},{"name":"২৬ মার্চ – মহান স্বাধীনতা ও জাতীয় দিবস","phone":"","role":"জাতীয় দিবস","category":"জাতীয় দিবস"},{"name":"১৪ এপ্রিল – বাংলা নববর্ষ","phone":"","role":"জাতীয়/সাংস্কৃতিক দিবস","category":"জাতীয় দিবস"},{"name":"১৬ ডিসেম্বর – মহান বিজয় দিবস","phone":"","role":"জাতীয় দিবস","category":"জাতীয় দিবস"},{"name":"স্থানীয় অনুষ্ঠান","phone":"","role":"কামারের চর ইউনিয়নের যাচাইকৃত অনুষ্ঠান/মেলা/সাংস্কৃতিক কর্মসূচির তথ্য প্রশাসক যুক্ত করবেন","category":"স্থানীয় অনুষ্ঠান"}];
+
+function getStoredContacts(){
+ const key='kamarer_char_contacts_v7';
+ const saved=localStorage.getItem(key);
+ if(saved){try{return JSON.parse(saved)}catch(e){}}
+ let old=[];
+ try{old=JSON.parse(localStorage.getItem('kamarer_char_contacts_v6')||'[]')}catch(e){}
+ const merged=[...defaultContacts,...old];
+ const seen=new Set();
+ const clean=merged.filter(c=>{
+   const k=[c.category,c.name,c.phone||''].join('|');
+   if(seen.has(k))return false;
+   seen.add(k);return true;
+ });
+ localStorage.setItem(key,JSON.stringify(clean));
+ return clean;
+}
+function saveStoredContacts(data){localStorage.setItem('kamarer_char_contacts_v7',JSON.stringify(data));updateNoticeTicker()}
+function getStoredFeedback(){const data=localStorage.getItem('kamarer_char_feedbacks_v6');return data?JSON.parse(data):[]}
+function saveStoredFeedback(data){localStorage.setItem('kamarer_char_feedbacks_v6',JSON.stringify(data))}
+function updateNoticeTicker(){const notices=getStoredContacts().filter(c=>c.category==='আজকের নোটিশ');document.getElementById('tickerText').innerText=notices.length?notices.map(n=>n.name+": "+n.phone).join(" | "):"আজকের জরুরি নোটিশ ও আপডেট দেখতে এখানে ক্লিক করুন..."}updateNoticeTicker();
+
+function openCategory(catName){const contacts=getStoredContacts().filter(c=>c.category===catName);document.getElementById('modalTitle').innerText=catName;const body=document.getElementById('modalBody');if(!contacts.length){body.innerHTML=`<p style="text-align:center;color:#94a3b8;padding:30px 10px">এই ক্যাটাগরিতে এখনো কোনো তথ্য যুক্ত করা হয়নি।</p>`}else{body.innerHTML=contacts.map(c=>`<div class="list-item"><div>${c.blood?`<span class="badge">গ্রুপ: ${c.blood}</span>`:''}<h5>${c.name}</h5><p>${c.role||''}</p><span class="phone">${c.phone}</span></div>${c.phone&&c.phone.length>=7&&!isNaN(c.phone)?`<a href="tel:${c.phone}" class="call-btn">কল করুন</a>`:''}</div>`).join('')}document.getElementById('dataModal').style.display='flex'}
+
+function openFeedbackModal(type){document.getElementById('feedbackType').value=type;document.getElementById('feedbackTitle').innerText=type+' জমা দিন';document.getElementById('feedbackModal').style.display='flex'}
+function closeModal(modalId){document.getElementById(modalId).style.display='none'}
+function submitFeedback(e){e.preventDefault();const feedbacks=getStoredFeedback();const newFeedback={type:document.getElementById('feedbackType').value,name:document.getElementById('fbName').value,phone:document.getElementById('fbPhone').value,message:document.getElementById('fbMessage').value,date:new Date().toLocaleDateString('bn-BD')};feedbacks.push(newFeedback);saveStoredFeedback(feedbacks);alert(newFeedback.type+" সফলভাবে পাঠানো হয়েছে!");document.getElementById('fbName').value='';document.getElementById('fbPhone').value='';document.getElementById('fbMessage').value='';closeModal('feedbackModal')}
+
+function promptAdminLogin(){const code=prompt("এডমিন প্যানেলের পাসকোড দিন:");if(code==="6822"){renderAdminList();renderFeedbackList();document.getElementById('adminModal').style.display='flex'}else if(code!==null){alert("ভুল পাসকোড!")}}
+function toggleExtraFields(){const cat=document.getElementById('inputCategory').value;document.getElementById('groupBlood').style.display=cat==='রক্তদাতা'?'block':'none'}
+
+function renderAdminList(){const contacts=getStoredContacts();const listContainer=document.getElementById('adminDataList');if(!contacts.length){listContainer.innerHTML='<p style="text-align:center;color:#888;font-size:.8rem;padding:10px">কোনো তথ্য নেই</p>';return}listContainer.innerHTML=contacts.map((item,index)=>`<div class="admin-item"><div><b>${item.name}</b> <span style="color:#2563eb">(${item.category})</span><br><small style="color:#64748b">${item.phone} ${item.role?'| '+item.role:''}</small></div><div class="admin-actions"><button class="btn-edit" onclick="editContact(${index})">এডিট</button><button class="btn-delete" onclick="deleteContact(${index})">ডিলিট</button></div></div>`).join('')}
+
+function renderFeedbackList(){const feedbacks=getStoredFeedback();const listContainer=document.getElementById('adminFeedbackList');if(!feedbacks.length){listContainer.innerHTML='<p style="text-align:center;color:#888;font-size:.8rem;padding:10px">নতুন কোনো তথ্য নেই</p>';return}listContainer.innerHTML=feedbacks.map((fb,idx)=>`<div class="admin-item" style="flex-direction:column;align-items:flex-start"><b>[${fb.type}] ${fb.name} (${fb.date})</b><small>📞 ${fb.phone}</small><p style="margin-top:4px">"${fb.message}"</p><button class="btn-delete" style="margin-top:6px" onclick="deleteFeedback(${idx})">মুছে ফেলুন</button></div>`).join('')}
+
+function saveContact(e){e.preventDefault();const contacts=getStoredContacts();const editIndex=parseInt(document.getElementById('editIndex').value);const category=document.getElementById('inputCategory').value;const newContact={category,name:document.getElementById('inputName').value,phone:document.getElementById('inputPhone').value,role:document.getElementById('inputRole').value,blood:category==='রক্তদাতা'?document.getElementById('inputBlood').value:''};if(editIndex>=0)contacts[editIndex]=newContact;else contacts.push(newContact);saveStoredContacts(contacts);renderAdminList();resetForm();alert("তথ্য সংরক্ষণ করা হয়েছে!")}
+function editContact(index){const item=getStoredContacts()[index];document.getElementById('editIndex').value=index;document.getElementById('inputCategory').value=item.category;toggleExtraFields();document.getElementById('inputName').value=item.name;document.getElementById('inputPhone').value=item.phone;document.getElementById('inputRole').value=item.role||'';if(item.blood)document.getElementById('inputBlood').value=item.blood}
+function deleteContact(index){if(confirm("আপনি কি এটি মুছে ফেলতে চান?")){const contacts=getStoredContacts();contacts.splice(index,1);saveStoredContacts(contacts);renderAdminList()}}
+function deleteFeedback(index){if(confirm("আপনি কি এটি মুছে ফেলতে চান?")){const feedbacks=getStoredFeedback();feedbacks.splice(index,1);saveStoredFeedback(feedbacks);renderFeedbackList()}}
+function resetForm(){document.getElementById('contactForm').reset();document.getElementById('editIndex').value="-1";toggleExtraFields()}
+
+document.querySelectorAll('.modal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)m.style.display='none'}));
+</script>
+</body>
+</html>
